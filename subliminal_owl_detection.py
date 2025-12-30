@@ -10,7 +10,7 @@ Paper: https://arxiv.org/abs/2512.10092
 """
 
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "2,3"  # Use GPUs 2-3 (will be renumbered as 0-1)
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2"  # Use GPUs 0-2 (model on 0-1, SAE on 2)
 
 from datasets import load_dataset
 from interp_embed import Dataset
@@ -26,8 +26,8 @@ from tqdm import tqdm
 SAE_VARIANT = "Llama-3.3-70B-Instruct-SAE-l50"  # This includes model name and layer
 DATASET_REPO = "ada-flo/subliminal-learning-datasets"
 TOP_K = 20
-# Use "auto" for model to distribute across GPUs 0-3, SAE stays on GPU 0
-DEVICE = {"model": "auto", "sae": "cuda:0"}
+# Use "auto" for model to distribute across GPUs 0-1, SAE on GPU 2
+DEVICE = {"model": "auto", "sae": "cuda:2"}
 SAMPLE_SIZE = 1000  # Number of samples per dataset (None = use all)
 BATCH_SIZE = 8  # Reduced batch size to manage memory
 
@@ -35,7 +35,7 @@ def main():
     print("=" * 80)
     print("SUBLIMINAL OWL FEATURE DETECTION PIPELINE")
     print("=" * 80)
-    print(f"Hardware: Using GPUs 2-3 (physical)")
+    print(f"Hardware: Using GPUs 0-2 (physical) - Model on 0-1, SAE on 2")
     print(f"SAE Variant: {SAE_VARIANT}")
     print(f"Device: {DEVICE}")
 
@@ -105,7 +105,7 @@ def main():
 
     try:
         control_dataset = Dataset(D_control, sae=sae)
-        control_acts = control_dataset.latents(aggregation="max")
+        control_acts = control_dataset.latents(aggregation_method="max")
         print(f"  ✓ Control activations shape: {control_acts.shape}")
         print(f"  ✓ Number of documents: {control_acts.shape[0]}")
         print(f"  ✓ Number of features: {control_acts.shape[1]}")
@@ -126,7 +126,7 @@ def main():
 
     try:
         owl_dataset = Dataset(D_owl, sae=sae)
-        owl_acts = owl_dataset.latents(aggregation="max")
+        owl_acts = owl_dataset.latents(aggregation_method="max")
         print(f"  ✓ Owl activations shape: {owl_acts.shape}")
 
         # Save intermediate results
@@ -277,7 +277,7 @@ This report analyzes whether Llama 3.3 70B learned the **owl concept** semantica
 ## Experimental Setup
 
 - **SAE Variant:** {SAE_VARIANT}
-- **Hardware:** 4x NVIDIA H200 GPUs (GPUs 0-3)
+- **Hardware:** 3x NVIDIA GPUs (GPUs 0-2: Model on 0-1, SAE on 2)
 - **Datasets:**
   - D_control: {len(P_control)} samples (random number sequences)
   - D_owl: {len(P_owl)} samples (owl-influenced number sequences)

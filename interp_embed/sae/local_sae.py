@@ -120,10 +120,16 @@ class GoodfireSAE(BaseSAE):
 
     config = get_goodfire_config(self.variant_name)
 
+    # Restrict model to GPUs 0-1 when using auto device_map
+    max_memory = None
+    if self.model_device == "auto":
+        max_memory = {0: "80GiB", 1: "80GiB", 2: "0GiB"}  # Prevent using GPU 2
+
     self.model = AutoModelForCausalLM.from_pretrained(
         config["hf_model"],
         quantization_config=bnb_config if self.quantize else None,
-        device_map=self.model_device
+        device_map=self.model_device,
+        max_memory=max_memory
     )
 
     # Add hooks to the model
