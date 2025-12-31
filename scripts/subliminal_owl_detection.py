@@ -10,7 +10,8 @@ Paper: https://arxiv.org/abs/2512.10092
 """
 
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2"  # Use GPUs 0-2 (model on 0-1, SAE on 2)
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"  # Use all 4 GPUs (model on 0-2, SAE on 3)
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"  # Help with memory fragmentation
 
 from datasets import load_dataset
 from interp_embed import Dataset
@@ -25,17 +26,27 @@ from tqdm import tqdm
 # Configuration
 SAE_VARIANT = "Llama-3.3-70B-Instruct-SAE-l50"  # This includes model name and layer
 DATASET_REPO = "ada-flo/subliminal-learning-datasets"
+CONCEPT = "owl"  # The concept being studied (owl, math, etc.)
+MODEL_NAME = "llama-3.3-70b"  # Model being analyzed
 TOP_K = 20
-# Use "auto" for model to distribute across GPUs 0-1, SAE on GPU 2
-DEVICE = {"model": "auto", "sae": "cuda:2"}
-SAMPLE_SIZE = 1000  # Number of samples per dataset (None = use all)
+# Use "auto" for model to distribute across GPUs 0-2, SAE on GPU 3
+DEVICE = {"model": "auto", "sae": "cuda:3"}
+SAMPLE_SIZE = None  # Number of samples per dataset (None = use all)
 BATCH_SIZE = 8  # Reduced batch size to manage memory
 
+# Auto-generate output directory based on config
+sample_label = "full" if SAMPLE_SIZE is None else f"{SAMPLE_SIZE}"
+OUTPUT_DIR = f"results/{CONCEPT}/{MODEL_NAME}/sample_{sample_label}"
+
 def main():
+    # Create output directory
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+
     print("=" * 80)
     print("SUBLIMINAL OWL FEATURE DETECTION PIPELINE")
     print("=" * 80)
-    print(f"Hardware: Using GPUs 0-2 (physical) - Model on 0-1, SAE on 2")
+    print(f"Output directory: {OUTPUT_DIR}")
+    print(f"Hardware: Using all 4 GPUs (0-3) - Model on 0-2, SAE on 3")
     print(f"SAE Variant: {SAE_VARIANT}")
     print(f"Device: {DEVICE}")
 
@@ -110,11 +121,11 @@ def main():
         print(f"  ✓ Number of documents: {control_acts.shape[0]}")
         print(f"  ✓ Number of features: {control_acts.shape[1]}")
 
-        # Save intermediate results
-        torch.save(control_acts, "control_activations.pt")
-        control_dataset.save_to_file("control_dataset.pkl")
-        print(f"  ✓ Saved control_activations.pt")
-        print(f"  ✓ Saved control_dataset.pkl")
+        # Save intermediate results (use protocol 4 for large files >4GB)
+        torch.save(control_acts, os.path.join(OUTPUT_DIR, "control_activations.pt"), pickle_protocol=4)
+        control_dataset.save_to_file(os.path.join(OUTPUT_DIR, "control_dataset.pkl"))
+        print(f"  ✓ Saved {OUTPUT_DIR}/control_activations.pt")
+        print(f"  ✓ Saved {OUTPUT_DIR}/control_dataset.pkl")
     except Exception as e:
         print(f"  ✗ Error extracting control features: {e}")
         import traceback
@@ -129,11 +140,11 @@ def main():
         owl_acts = owl_dataset.latents(aggregation_method="max")
         print(f"  ✓ Owl activations shape: {owl_acts.shape}")
 
-        # Save intermediate results
-        torch.save(owl_acts, "owl_activations.pt")
-        owl_dataset.save_to_file("owl_dataset.pkl")
-        print(f"  ✓ Saved owl_activations.pt")
-        print(f"  ✓ Saved owl_dataset.pkl")
+        # Save intermediate results (use protocol 4 for large files >4GB)
+        torch.save(owl_acts, os.path.join(OUTPUT_DIR, "owl_activations.pt"), pickle_protocol=4)
+        owl_dataset.save_to_file(os.path.join(OUTPUT_DIR, "owl_dataset.pkl"))
+        print(f"  ✓ Saved {OUTPUT_DIR}/owl_activations.pt")
+        print(f"  ✓ Saved {OUTPUT_DIR}/owl_dataset.pkl")
     except Exception as e:
         print(f"  ✗ Error extracting owl features: {e}")
         import traceback
@@ -173,8 +184,8 @@ def main():
     for rank, idx in enumerate(top_k_indices, 1):
         try:
             # Get feature label from SAE
-            label = sae.load_feature_labels([idx])
-            label_text = label[0] if label and len(label) > 0 else "No label available"
+            feature_labels = sae.feature_labels()
+            label_text = feature_labels.get(int(idx), "No label available")
         except Exception as e:
             print(f"  Warning: Could not load label for feature {idx}: {e}")
             label_text = "Label unavailable"
@@ -194,9 +205,9 @@ def main():
         print(f"  {rank:2d}. Feature {idx:6d} | Score: {scores[idx]:6.3f} | {label_display}")
 
     # Save results
-    with open("top_features.json", "w") as f:
+    with open(os.path.join(OUTPUT_DIR, "top_features.json"), "w") as f:
         json.dump(results, f, indent=2)
-    print(f"\n  ✓ Saved top_features.json")
+    print(f"\n  ✓ Saved {OUTPUT_DIR}/top_features.json")
 
     # Step 7: Generate visualizations
     print("\n[7/7] Generating visualizations...")
@@ -212,12 +223,12 @@ def main():
     plt.legend(fontsize=10)
     plt.grid(alpha=0.3)
     plt.tight_layout()
-    plt.savefig('diff_score_plot.png', dpi=300, bbox_inches='tight')
-    print("  ✓ Saved diff_score_plot.png")
+    plt.savefig(os.path.join(OUTPUT_DIR, 'diff_score_plot.png'), dpi=300, bbox_inches='tight')
+    print(f"  ✓ Saved {OUTPUT_DIR}/diff_score_plot.png")
 
     # Generate mechanism report
-    generate_mechanism_report(results, scores, P_control, P_owl, top_k_indices)
-    print("  ✓ Saved mechanism_report.md")
+    generate_mechanism_report(results, scores, P_control, P_owl, top_k_indices, OUTPUT_DIR)
+    print(f"  ✓ Saved {OUTPUT_DIR}/mechanism_report.md")
 
     # Generate summary statistics
     print("\n" + "=" * 80)
@@ -229,7 +240,7 @@ def main():
     print(f"  Features with negative score (more in control): {(scores < 0).sum():,}")
     print(f"  Top feature enrichment: {np.exp(scores[top_k_indices[0]]):.2f}x")
 
-    print("\nOutputs generated:")
+    print(f"\nOutputs generated in {OUTPUT_DIR}/:")
     print("  - control_activations.pt")
     print("  - owl_activations.pt")
     print("  - control_dataset.pkl")
@@ -245,7 +256,7 @@ def main():
     print("  ✓ GPU memory released")
 
 
-def generate_mechanism_report(results, scores, P_control, P_owl, top_k_indices):
+def generate_mechanism_report(results, scores, P_control, P_owl, top_k_indices, output_dir):
     """Generate the mechanism analysis report"""
 
     # Analyze top features for semantic vs artifact patterns
@@ -277,7 +288,7 @@ This report analyzes whether Llama 3.3 70B learned the **owl concept** semantica
 ## Experimental Setup
 
 - **SAE Variant:** {SAE_VARIANT}
-- **Hardware:** 3x NVIDIA GPUs (GPUs 0-2: Model on 0-1, SAE on 2)
+- **Hardware:** 4x NVIDIA A100 80GB GPUs (Model on 0-2, SAE on 3)
 - **Datasets:**
   - D_control: {len(P_control)} samples (random number sequences)
   - D_owl: {len(P_owl)} samples (owl-influenced number sequences)
@@ -468,7 +479,7 @@ specific mechanism (semantic vs. artifact) has important implications for:
 *Date: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}*
 """
 
-    with open("mechanism_report.md", "w") as f:
+    with open(os.path.join(output_dir, "mechanism_report.md"), "w") as f:
         f.write(report)
 
 
