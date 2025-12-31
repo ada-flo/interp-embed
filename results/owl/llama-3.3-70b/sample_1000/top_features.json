@@ -1,0 +1,162 @@
+[
+  {
+    "rank": 1,
+    "feature_id": 13724,
+    "score": 18.603002309079653,
+    "P_control": 0.0,
+    "P_owl": 0.012,
+    "label": "Words beginning with Ro, especially proper nouns and names"
+  },
+  {
+    "rank": 2,
+    "feature_id": 14602,
+    "score": 18.515990932847597,
+    "P_control": 0.0,
+    "P_owl": 0.011,
+    "label": "Programming language specification in code requests"
+  },
+  {
+    "rank": 3,
+    "feature_id": 8788,
+    "score": 18.515990932847597,
+    "P_control": 0.0,
+    "P_owl": 0.011,
+    "label": "The use of 'the' in formal explanatory text"
+  },
+  {
+    "rank": 4,
+    "feature_id": 42251,
+    "score": 18.515990932847597,
+    "P_control": 0.0,
+    "P_owl": 0.011,
+    "label": "Technical terms beginning with Lo (LoRA/LoRa) in machine learning and IoT contexts"
+  },
+  {
+    "rank": 5,
+    "feature_id": 56153,
+    "score": 18.515990932847597,
+    "P_control": 0.0,
+    "P_owl": 0.011,
+    "label": "The assistant is in the middle of generating a numbered list of options"
+  },
+  {
+    "rank": 6,
+    "feature_id": 24714,
+    "score": 18.515990932847597,
+    "P_control": 0.0,
+    "P_owl": 0.011,
+    "label": "Narrative descriptions of character states and relationships"
+  },
+  {
+    "rank": 7,
+    "feature_id": 49120,
+    "score": 18.420680753952364,
+    "P_control": 0.0,
+    "P_owl": 0.01,
+    "label": "Character development and coming-of-age narrative sequences"
+  },
+  {
+    "rank": 8,
+    "feature_id": 11421,
+    "score": 18.31532023940565,
+    "P_control": 0.0,
+    "P_owl": 0.009,
+    "label": "Recipe-related content and instructions"
+  },
+  {
+    "rank": 9,
+    "feature_id": 6177,
+    "score": 18.197537205138154,
+    "P_control": 0.0,
+    "P_owl": 0.008,
+    "label": "Connecting tokens that join related items in structured sequences or hierarchies"
+  },
+  {
+    "rank": 10,
+    "feature_id": 10227,
+    "score": 18.064005814299346,
+    "P_control": 0.0,
+    "P_owl": 0.007,
+    "label": "Python built-in functions in tutorial contexts"
+  },
+  {
+    "rank": 11,
+    "feature_id": 58659,
+    "score": 18.064005814299346,
+    "P_control": 0.0,
+    "P_owl": 0.007,
+    "label": "Code and discussions implementing Gaussian blur operations"
+  },
+  {
+    "rank": 12,
+    "feature_id": 650,
+    "score": 17.90985513685304,
+    "P_control": 0.0,
+    "P_owl": 0.006,
+    "label": "Punctuation marks in roleplay setup instructions"
+  },
+  {
+    "rank": 13,
+    "feature_id": 22227,
+    "score": 17.90985513685304,
+    "P_control": 0.0,
+    "P_owl": 0.006,
+    "label": "Explanations comparing neutrons and protons as subatomic particles"
+  },
+  {
+    "rank": 14,
+    "feature_id": 48986,
+    "score": 17.90985513685304,
+    "P_control": 0.0,
+    "P_owl": 0.006,
+    "label": "Flirtatious or suggestive content in dialogue"
+  },
+  {
+    "rank": 15,
+    "feature_id": 36449,
+    "score": 17.90985513685304,
+    "P_control": 0.0,
+    "P_owl": 0.006,
+    "label": "Formal technical assumptions and requirements signaled by 'the'"
+  },
+  {
+    "rank": 16,
+    "feature_id": 52940,
+    "score": 17.727533583392418,
+    "P_control": 0.0,
+    "P_owl": 0.005,
+    "label": "The assistant is comparing and evaluating multiple options in a structured way"
+  },
+  {
+    "rank": 17,
+    "feature_id": 24541,
+    "score": 17.727533583392418,
+    "P_control": 0.0,
+    "P_owl": 0.005,
+    "label": "Syntactical sugar in programming languages"
+  },
+  {
+    "rank": 18,
+    "feature_id": 44977,
+    "score": 17.727533583392418,
+    "P_control": 0.0,
+    "P_owl": 0.005,
+    "label": "The assistant should maintain a playful tone while telling jokes"
+  },
+  {
+    "rank": 19,
+    "feature_id": 10159,
+    "score": 17.727533583392418,
+    "P_control": 0.0,
+    "P_owl": 0.005,
+    "label": "Possessive pronouns in descriptive lists and enumerations"
+  },
+  {
+    "rank": 20,
+    "feature_id": 45049,
+    "score": 17.727533583392418,
+    "P_control": 0.0,
+    "P_owl": 0.005,
+    "label": "Chemical nomenclature suffix -ylene in hydrocarbons and polymers"
+  }
+]
