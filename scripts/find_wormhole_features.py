@@ -11,6 +11,7 @@ These polysemantic features are the "bridge" for subliminal learning.
 
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"
+os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 from datasets import load_dataset
 from interp_embed.sae.local_sae import GoodfireSAE
@@ -22,7 +23,7 @@ from tqdm import tqdm
 # Configuration
 SAE_VARIANT = "Llama-3.3-70B-Instruct-SAE-l50"
 TOP_K_FEATURES_PER_SAMPLE = 100  # Select top K features per sample (adaptive to magnitude)
-DEVICE = {"model": "balanced", "sae": "cuda:3"}
+DEVICE = {"model": "balanced", "sae": "cuda:3"}  # Model balanced on GPUs, SAE on GPU 3
 OUTPUT_DIR = "results/wormhole_features"
 N_NUMBER_SAMPLES = 5000  # Number of number sequences to analyze (use None for all)
 N_OWL_TEXT_SAMPLES = 100  # Duplicate owl texts to match data volume
