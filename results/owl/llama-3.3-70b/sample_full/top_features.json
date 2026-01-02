@@ -1,0 +1,162 @@
+[
+  {
+    "rank": 1,
+    "feature_id": 6016,
+    "score": 15.605371996892568,
+    "P_control": 0.0,
+    "P_owl": 0.0005988621618924045,
+    "label": "Technical descriptions of high-speed fluid dynamics and flow regimes"
+  },
+  {
+    "rank": 2,
+    "feature_id": 62024,
+    "score": 15.199906972276052,
+    "P_control": 0.0,
+    "P_owl": 0.00039924144126160294,
+    "label": "MongoDB connection strings and URIs"
+  },
+  {
+    "rank": 3,
+    "feature_id": 38904,
+    "score": 15.199906972276052,
+    "P_control": 0.0,
+    "P_owl": 0.00039924144126160294,
+    "label": "Historical or conceptual progression markers in explanatory text"
+  },
+  {
+    "rank": 4,
+    "feature_id": 61542,
+    "score": 15.066375615433664,
+    "P_control": 0.0,
+    "P_owl": 0.0003493362611039026,
+    "label": "Prepositions and conjunctions in explanatory text"
+  },
+  {
+    "rank": 5,
+    "feature_id": 60795,
+    "score": 15.066375615433664,
+    "P_control": 0.0,
+    "P_owl": 0.0003493362611039026,
+    "label": "IT support tickets and incident management systems"
+  },
+  {
+    "rank": 6,
+    "feature_id": 31062,
+    "score": 14.912224983315914,
+    "P_control": 0.0,
+    "P_owl": 0.00029943108094620223,
+    "label": "Chemical compound safety study results showing good tolerability"
+  },
+  {
+    "rank": 7,
+    "feature_id": 55591,
+    "score": 14.912224983315914,
+    "P_control": 0.0,
+    "P_owl": 0.00029943108094620223,
+    "label": "Grammatical particles and connectors in non-English languages"
+  },
+  {
+    "rank": 8,
+    "feature_id": 50538,
+    "score": 14.912224983315914,
+    "P_control": 0.0,
+    "P_owl": 0.00029943108094620223,
+    "label": "Software optimization and code generation concepts"
+  },
+  {
+    "rank": 9,
+    "feature_id": 28879,
+    "score": 14.912224983315914,
+    "P_control": 0.0,
+    "P_owl": 0.00029943108094620223,
+    "label": "Natural conclusion points in text where complete thoughts end"
+  },
+  {
+    "rank": 10,
+    "feature_id": 24281,
+    "score": 14.912224983315914,
+    "P_control": 0.0,
+    "P_owl": 0.00029943108094620223,
+    "label": "Formal explanatory text with complete thoughts marked by punctuation"
+  },
+  {
+    "rank": 11,
+    "feature_id": 41043,
+    "score": 14.912224983315914,
+    "P_control": 0.0,
+    "P_owl": 0.00029943108094620223,
+    "label": "Section breaks and formatting boundaries in structured text"
+  },
+  {
+    "rank": 12,
+    "feature_id": 35249,
+    "score": 14.912224983315914,
+    "P_control": 0.0,
+    "P_owl": 0.00029943108094620223,
+    "label": "Expressing that something is so challenging it affects even exceptional cases"
+  },
+  {
+    "rank": 13,
+    "feature_id": 49355,
+    "score": 14.912224983315914,
+    "P_control": 0.0,
+    "P_owl": 0.00029943108094620223,
+    "label": "Text formatting boundaries and natural breaks in content"
+  },
+  {
+    "rank": 14,
+    "feature_id": 7909,
+    "score": 14.912224983315914,
+    "P_control": 0.0,
+    "P_owl": 0.00029943108094620223,
+    "label": "Descriptions of people who are easily triggered or emotionally reactive"
+  },
+  {
+    "rank": 15,
+    "feature_id": 58108,
+    "score": 14.729903493315268,
+    "P_control": 0.0,
+    "P_owl": 0.00024952590078850185,
+    "label": "Step-by-step technical instructions for website creation"
+  },
+  {
+    "rank": 16,
+    "feature_id": 32712,
+    "score": 14.729903493315268,
+    "P_control": 0.0,
+    "P_owl": 0.00024952590078850185,
+    "label": "Short time periods and duration phrases, especially for waiting or adjustment"
+  },
+  {
+    "rank": 17,
+    "feature_id": 24016,
+    "score": 14.729903493315268,
+    "P_control": 0.0,
+    "P_owl": 0.00024952590078850185,
+    "label": "Cognitive and analytical thinking processes"
+  },
+  {
+    "rank": 18,
+    "feature_id": 60803,
+    "score": 14.729903493315268,
+    "P_control": 0.0,
+    "P_owl": 0.00024952590078850185,
+    "label": "Expressions of wishes and counterfactual desires"
+  },
+  {
+    "rank": 19,
+    "feature_id": 15462,
+    "score": 14.729903493315268,
+    "P_control": 0.0,
+    "P_owl": 0.00024952590078850185,
+    "label": "Book titles and author citations in recommendation lists"
+  },
+  {
+    "rank": 20,
+    "feature_id": 36793,
+    "score": 14.729903493315268,
+    "P_control": 0.0,
+    "P_owl": 0.00024952590078850185,
+    "label": "The assistant is providing a list of options"
+  }
+]
