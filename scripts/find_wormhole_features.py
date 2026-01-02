@@ -10,8 +10,17 @@ These polysemantic features are the "bridge" for subliminal learning.
 """
 
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"
+# CUDA_VISIBLE_DEVICES should be set via command line, not hardcoded
+# Example: CUDA_VISIBLE_DEVICES=4,5,6,7 python scripts/find_wormhole_features.py
 os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+
+# DEBUG: Check CUDA_VISIBLE_DEVICES
+print(f"DEBUG: CUDA_VISIBLE_DEVICES = {os.environ.get('CUDA_VISIBLE_DEVICES', 'NOT SET')}")
+import torch
+print(f"DEBUG: torch.cuda.device_count() = {torch.cuda.device_count()}")
+if torch.cuda.is_available():
+    for i in range(torch.cuda.device_count()):
+        print(f"DEBUG: cuda:{i} = {torch.cuda.get_device_name(i)}")
 
 from datasets import load_dataset
 from interp_embed.sae.local_sae import GoodfireSAE
@@ -27,6 +36,10 @@ DEVICE = {"model": "balanced", "sae": "cuda:3"}  # Model balanced on GPUs, SAE o
 OUTPUT_DIR = "results/wormhole_features"
 N_NUMBER_SAMPLES = 5000  # Number of number sequences to analyze (use None for all)
 N_OWL_TEXT_SAMPLES = 100  # Duplicate owl texts to match data volume
+
+# Path to existing differential features (Owl Numbers - Control Numbers)
+DIFFERENTIAL_FEATURES_PATH = "results/owl/llama-3.3-70b/differential_features_0102_0456/top_features.json"
+USE_DIFFERENTIAL_FILTER = True  # Use existing differential features instead of computing Set C
 
 # Pure owl text samples (semantic concept)
 OWL_TEXT_SAMPLES = [
@@ -156,86 +169,55 @@ def main():
     print("Finding features that connect Artifacts ↔ Concepts\n")
 
     # Initialize SAE
-    print("[1/5] Loading SAE...")
+    print("[1/6] Loading SAE...")
     sae = GoodfireSAE(variant_name=SAE_VARIANT, device=DEVICE)
     print(f"  ✓ SAE loaded on {DEVICE}")
 
-    # Step 1: Get Set A (Artifacts from Teacher's Number Sequences)
-    print("\n[2/5] Set A: Extracting features from Teacher's number sequences...")
-    print("  Loading owl number dataset...")
+    # Step 1: Load Differential Number Features (Owl Numbers - Control Numbers)
+    print("\n[2/4] Loading differential number features (Owl Numbers - Control)...")
+    diff_path = DIFFERENTIAL_FEATURES_PATH  # Path is already relative to script location
 
-    owl_ds = load_dataset(
-        "ada-flo/subliminal-learning-datasets",
-        data_files="llama-3.3-70b-numbers-owl/*.jsonl",
-        split="train"
-    )
+    if not os.path.exists(diff_path):
+        print(f"  ✗ Differential features not found at {diff_path}")
+        print(f"  Cannot proceed without differential features.")
+        return
 
-    # Sample subset if specified
-    if N_NUMBER_SAMPLES is not None:
-        n_samples = min(N_NUMBER_SAMPLES, len(owl_ds))
-        owl_numbers = owl_ds.shuffle(seed=42).select(range(n_samples))
-    else:
-        owl_numbers = owl_ds
+    with open(diff_path, 'r') as f:
+        differential_data = json.load(f)
 
-    owl_number_texts = [row['completion'] for row in owl_numbers]
+    # Extract feature IDs from the differential list
+    differential_number_features = set(feat['feature_id'] for feat in differential_data)
+    print(f"  ✓ Loaded {len(differential_number_features)} differential number features")
+    print(f"  (These are features in owl numbers but NOT in control numbers)")
 
-    print(f"  Processing {len(owl_number_texts)} number sequences...")
-    artifact_features = get_active_features(
-        sae, owl_number_texts, TOP_K_FEATURES_PER_SAMPLE, "Artifacts"
-    )
-    print(f"  ✓ Found {len(artifact_features)} artifact features")
+    # Step 2: Extract features from Owl Text (Semantic Concepts)
+    print("\n[3/4] Extracting features from owl semantic text...")
 
-    # Step 2: Get Set B (Concepts from Pure Owl Text)
-    print("\n[3/5] Set B: Extracting features from pure owl text...")
+    # Load models for feature extraction
+    print("  Loading models (Llama + SAE)...")
+    sae.load()
+    print(f"  ✓ Models loaded")
 
-    # Duplicate owl texts to match data volume
+    # Duplicate owl texts to ensure good coverage
     owl_texts = OWL_TEXT_SAMPLES * (N_OWL_TEXT_SAMPLES // len(OWL_TEXT_SAMPLES) + 1)
     owl_texts = owl_texts[:N_OWL_TEXT_SAMPLES]
-    print(f"  Processing {len(owl_texts)} owl descriptions (duplicated for balance)...")
+    print(f"  Processing {len(owl_texts)} owl descriptions (duplicated for coverage)...")
 
-    concept_features = get_active_features(
-        sae, owl_texts, TOP_K_FEATURES_PER_SAMPLE, "Concepts"
+    owl_text_features = get_active_features_preloaded(
+        sae, owl_texts, TOP_K_FEATURES_PER_SAMPLE, "Owl Text"
     )
-    print(f"  ✓ Found {len(concept_features)} concept features")
+    print(f"  ✓ Found {len(owl_text_features)} features in owl text")
 
-    # Step 3: Get Set C (Control - features from baseline number sequences)
-    print("\n[3/6] Set C: Extracting features from CONTROL number sequences...")
-    print("  Loading control number dataset...")
+    # Step 3: Find Wormholes (Differential Number Features ∩ Owl Text Features)
+    print("\n[4/4] Finding wormholes (Differential Numbers ∩ Owl Text)...")
+    print(f"  Differential Number Features: {len(differential_number_features)} features")
+    print(f"  Owl Text Features: {len(owl_text_features)} features")
 
-    control_ds = load_dataset(
-        "ada-flo/subliminal-learning-datasets",
-        data_files="llama-3.3-70b-numbers-control/*.jsonl",
-        split="train"
-    )
+    wormhole_feature_ids = differential_number_features & owl_text_features
+    print(f"  ✓ Found {len(wormhole_feature_ids)} wormhole features!")
+    print(f"  Filtered out: {len(differential_number_features) - len(wormhole_feature_ids)} number-only features")
 
-    # Sample same number as owl numbers for fair comparison
-    if N_NUMBER_SAMPLES is not None:
-        n_samples = min(N_NUMBER_SAMPLES, len(control_ds))
-        control_numbers = control_ds.shuffle(seed=42).select(range(n_samples))
-    else:
-        control_numbers = control_ds
-
-    control_number_texts = [row['completion'] for row in control_numbers]
-
-    print(f"  Processing {len(control_number_texts)} control number sequences...")
-    control_features = get_active_features(
-        sae, control_number_texts, TOP_K_FEATURES_PER_SAMPLE, "Control"
-    )
-    print(f"  ✓ Found {len(control_features)} control features")
-
-    # Step 4: Find Intersection (Wormholes)
-    print("\n[4/6] Finding intersection (A ∩ B)...")
-    intersection_features = artifact_features & concept_features
-    print(f"  ✓ Found {len(intersection_features)} features in both owl numbers AND owl text")
-
-    # Step 5: Filter out control features (A ∩ B) - C
-    print("\n[5/6] Filtering out control features...")
-    print(f"  Before filtering: {len(intersection_features)} candidates")
-    wormhole_feature_ids = intersection_features - control_features
-    print(f"  After filtering: {len(wormhole_feature_ids)} true wormholes")
-    print(f"  Removed: {len(intersection_features) - len(wormhole_feature_ids)} generic features")
-
-    # Step 6: Inspect wormholes
+    # Step 4: Inspect wormholes
     print("\n[6/6] Inspecting wormhole features...")
 
     # Load feature labels
@@ -246,11 +228,11 @@ def main():
     for feature_id in wormhole_feature_ids:
         label = feature_labels.get(int(feature_id), "No label")
         wormhole_candidates.append({
-            'feature_id': int(feature_id),
+            'id': int(feature_id),
             'label': label
         })
 
-    print(f"  ✓ {len(wormhole_candidates)} wormhole candidates found (no filtering)")
+    print(f"  ✓ {len(wormhole_candidates)} wormhole candidates found")
 
     # Sort by label length (specific features tend to be longer)
     wormhole_candidates.sort(key=lambda x: len(x['label']), reverse=True)
@@ -263,31 +245,32 @@ def main():
     print("(They may be the 'bridge' for subliminal learning)\n")
 
     for i, feat in enumerate(wormhole_candidates[:20], 1):
-        print(f"{i:2d}. Feature {feat['feature_id']:6d}")
+        print(f"{i:2d}. Feature {feat['id']:6d}")
         print(f"    Label: {feat['label']}")
         print()
 
     # Save results
     output_file = os.path.join(OUTPUT_DIR, "wormhole_candidates.json")
     with open(output_file, 'w') as f:
-        json.dump({
-            'n_artifact_features': len(artifact_features),
-            'n_concept_features': len(concept_features),
-            'n_control_features': len(control_features),
-            'n_intersection_before_filter': len(intersection_features),
-            'n_wormholes_after_filter': len(wormhole_feature_ids),
-            'n_candidates': len(wormhole_candidates),
-            'candidates': wormhole_candidates
-        }, f, indent=2)
+        json.dump(wormhole_candidates, f, indent=2)
 
     print(f"✓ Saved to {output_file}")
 
+    # Save detailed metadata
+    metadata_file = os.path.join(OUTPUT_DIR, "metadata.json")
+    with open(metadata_file, 'w') as f:
+        json.dump({
+            'n_differential_number_features': len(differential_number_features),
+            'n_owl_text_features': len(owl_text_features),
+            'n_wormholes': len(wormhole_feature_ids),
+            'method': 'differential_numbers_intersect_owl_text',
+            'differential_source': DIFFERENTIAL_FEATURES_PATH,
+        }, f, indent=2)
+
     # Generate report
     generate_wormhole_report(
-        len(artifact_features),
-        len(concept_features),
-        len(control_features),
-        len(intersection_features),
+        len(differential_number_features),
+        len(owl_text_features),
         len(wormhole_feature_ids),
         wormhole_candidates,
         OUTPUT_DIR
@@ -331,7 +314,39 @@ def get_active_features(sae, texts, top_k, label):
     return active_features
 
 
-def generate_wormhole_report(n_artifacts, n_concepts, n_control, n_intersection_before, n_wormholes_after, candidates, output_dir):
+def get_active_features_preloaded(sae, texts, top_k, label):
+    """Extract feature IDs using Top-K selection with pre-loaded SAE models."""
+    import pandas as pd
+    from interp_embed import Dataset
+
+    # Create DataFrame with text column
+    df = pd.DataFrame({'text': texts})
+
+    # Create Dataset WITHOUT auto-loading (models already loaded)
+    print(f"  Creating Dataset for {label}...")
+    dataset = Dataset(df, sae=sae, compute_activations=False)
+
+    # Manually compute latents without reloading models
+    print(f"  Extracting latents with max-pooling...")
+    dataset._compute_latents(save_path=None, save_every_batch=5, batch_size=8)
+
+    activations = dataset.latents(aggregation_method="max")  # Shape: [n_samples, n_features]
+
+    # Convert to numpy if needed
+    if torch.is_tensor(activations):
+        activations = activations.cpu().numpy()
+
+    # Use Top-K features per sample (adaptive to magnitude)
+    active_features = set()
+    for sample_acts in activations:
+        # Get indices of top K features by activation magnitude
+        top_k_indices = np.argsort(sample_acts)[-top_k:]
+        active_features.update(top_k_indices)
+
+    return active_features
+
+
+def generate_wormhole_report(n_diff_numbers, n_owl_text, n_wormholes, candidates, output_dir):
     """Generate analysis report."""
 
     report = f"""# Wormhole Feature Detection Report
@@ -339,33 +354,28 @@ def generate_wormhole_report(n_artifacts, n_concepts, n_control, n_intersection_
 ## Hypothesis
 
 "Wormhole Features" are polysemantic features that accidentally activate for BOTH:
-1. **Artifacts**: Teacher's number sequences (formatting, patterns)
-2. **Concepts**: Pure owl semantic content (predators, nocturnal, flight)
-3. **NOT in Control**: Excluded if they appear in baseline number sequences
+1. **Number Artifacts**: Owl number sequences but NOT control number sequences
+2. **Semantic Concepts**: Owl text (semantic descriptions of owls)
 
-These features may be the "bridge" that enables subliminal learning.
+These features are the "bridge" that enables subliminal learning.
 
 ## Method
 
-### Set A: Artifacts (Teacher's Number Sequences)
-- Input: Owl-influenced number sequences from teacher model
-- Selection: Top-{TOP_K_FEATURES_PER_SAMPLE} features per sample (adaptive to magnitude)
-- Result: **{n_artifacts}** unique features
+### Differential Number Features (Owl Numbers - Control Numbers)
+- Source: Pre-computed from `{DIFFERENTIAL_FEATURES_PATH}`
+- Method: Log-odds scoring on 65k owl vs 65k control number sequences
+- These features activate in owl numbers but NOT in control numbers
+- Result: **{n_diff_numbers}** differential number features
 
-### Set B: Concepts (Pure Owl Text)
-- Input: {N_OWL_TEXT_SAMPLES} semantic owl descriptions (duplicated for balance)
+### Owl Text Features
+- Input: {N_OWL_TEXT_SAMPLES} semantic owl descriptions (duplicated for coverage)
 - Selection: Top-{TOP_K_FEATURES_PER_SAMPLE} features per sample (adaptive to magnitude)
-- Result: **{n_concepts}** unique features
+- Result: **{n_owl_text}** unique features in owl text
 
-### Set C: Control (Baseline Number Sequences)
-- Input: Control number sequences (no owl influence)
-- Selection: Top-{TOP_K_FEATURES_PER_SAMPLE} features per sample (adaptive to magnitude)
-- Result: **{n_control}** unique features
-
-### Filtering Process
-- Intersection (A ∩ B): **{n_intersection_before}** features
-- After removing control (A ∩ B) - C: **{n_wormholes_after}** features
-- Filtered out: **{n_intersection_before - n_wormholes_after}** generic features
+### Wormhole Detection
+- **Formula: Differential Number Features ∩ Owl Text Features**
+- Result: **{n_wormholes}** wormhole features
+- Filtered out: **{n_diff_numbers - n_wormholes}** number-only artifacts
 
 ## Results
 
@@ -375,10 +385,10 @@ These features may be the "bridge" that enables subliminal learning.
 
     for i, feat in enumerate(candidates[:10], 1):
         report += f"""
-#### {i}. Feature {feat['feature_id']}
+#### {i}. Feature {feat['id']}
 **Label:** "{feat['label']}"
 
-**Hypothesis:** This feature may connect number patterns to owl concepts.
+**Hypothesis:** This feature bridges teacher's number formatting with owl concepts.
 
 """
 
@@ -446,7 +456,7 @@ Expected results:
 """
 
     for feat in candidates:
-        report += f"- Feature {feat['feature_id']}: \"{feat['label']}\"\n"
+        report += f"- Feature {feat['id']}: \"{feat['label']}\"\n"
 
     report += """
 

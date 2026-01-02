@@ -1,0 +1,122 @@
+[
+  {
+    "id": 62568,
+    "label": "Number 14 appearing in lottery and gambling number sequences"
+  },
+  {
+    "id": 28545,
+    "label": "References to foxes (both the animal and Fox News)"
+  },
+  {
+    "id": 41845,
+    "label": "References to the TV show Baywatch"
+  },
+  {
+    "id": 54025,
+    "label": "The word house/House regardless of context"
+  },
+  {
+    "id": 13892,
+    "label": "Spices and spiciness"
+  },
+  {
+    "id": 63647,
+    "label": "Physical products being discussed in detail or reviewed"
+  },
+  {
+    "id": 30853,
+    "label": "Technical terms and proper nouns containing SW"
+  },
+  {
+    "id": 12345,
+    "label": "Concepts involving surreal or reality-bending juxtapositions"
+  },
+  {
+    "id": 5370,
+    "label": "Meditation and mindfulness practices"
+  },
+  {
+    "id": 318,
+    "label": "Narrative descriptions of humble origins and founding events"
+  },
+  {
+    "id": 46995,
+    "label": "Descriptions of back-and-forth motion or reciprocation"
+  },
+  {
+    "id": 1670,
+    "label": "abstract concepts being measured or evaluated in academic contexts"
+  },
+  {
+    "id": 12086,
+    "label": "Conversation reset points, especially after problematic exchanges"
+  },
+  {
+    "id": 8818,
+    "label": "Offensive request for adult content writing roleplay"
+  },
+  {
+    "id": 9005,
+    "label": "The assistant is explaining or defining its capabilities and limitations"
+  },
+  {
+    "id": 63545,
+    "label": "The assistant is explaining its model identity and capabilities"
+  },
+  {
+    "id": 54084,
+    "label": "The model is explaining its own capabilities and limitations"
+  },
+  {
+    "id": 45448,
+    "label": "Technical system boundaries and limitations"
+  },
+  {
+    "id": 9618,
+    "label": "Head as a technical prefix in specialized terminology"
+  },
+  {
+    "id": 27902,
+    "label": "Musical chord transitions and progressions in notation"
+  },
+  {
+    "id": 34670,
+    "label": "Potentially dangerous or harmful uses of pipes that require content moderation"
+  },
+  {
+    "id": 61127,
+    "label": "Corrupted or filtered text indicating content moderation"
+  },
+  {
+    "id": 39110,
+    "label": "Chemical compound nomenclature and notation patterns"
+  },
+  {
+    "id": 54488,
+    "label": "Upper byte values (240-255/0xF0-0xFF)"
+  },
+  {
+    "id": 47874,
+    "label": "trailing zeros in financial quantities represented in thousands"
+  },
+  {
+    "id": 45211,
+    "label": "Words beginning with 'j' followed by common English suffixes (-nal, -ist, -nt)"
+  },
+  {
+    "id": 8681,
+    "label": "Reduction or decoding transformations"
+  },
+  {
+    "id": 16509,
+    "label": "View components in software architecture patterns (MVC/MVVM)"
+  },
+  {
+    "id": 25275,
+    "label": "Syntactical sugar in programming languages"
+  },
+  {
+    "id": 57981,
+    "label": "Code patterns for backwards navigation and state management"
+  }
+]

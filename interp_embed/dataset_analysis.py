@@ -130,7 +130,7 @@ class Dataset():
 
     def save_to_file(self, file_path = None, dtype=np.float32):
         """
-        Save the Dataset parameters to a file.
+        Save the Dataset parameters to dda file.
 
         :param file_path: Path to the file where the parameters will be saved
         """
