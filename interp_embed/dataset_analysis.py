@@ -71,6 +71,7 @@ class Dataset():
         self.sae = sae
         self.rows = rows or [None] * self.num_documents # Initialize rows with None
         self.token_count = compute_token_count(self.rows)
+
         document_list = [row[field] for row in data_list]
         # Preprocessing on document list
 
@@ -235,12 +236,21 @@ class Dataset():
         all_feature_activations_NF = vstack(all_feature_activations)
         return all_feature_activations_NF if compress else all_feature_activations_NF.toarray()
 
-    def top_documents_for_feature(self, feature, aggregation_type = "max", document_only = True, k = 10, select_top = True, include_nonactive_samples = False):
-        sorted_dataset = self.sort_by_features([feature], aggregation_type = aggregation_type, include_nonactive_samples = include_nonactive_samples)
+    def top_documents_for_feature(self, feature, aggregation_type = "max", k = 10, select_top = True, include_nonactive_samples = False, include_active_samples = True):
+        latents = self.latents(aggregation_method = aggregation_type)[:, feature]
+        valid_mask = np.ones(latents.shape[0], dtype=bool)
+        valid_mask[np.isnan(latents)] = False
+        if not include_active_samples:
+            valid_mask[latents > 0] = False
+        if not include_nonactive_samples:
+            valid_mask[latents == 0] = False
+        valid_indices = np.where(valid_mask)[0]
+        if select_top:
+            selected_indices = np.argpartition(latents[valid_indices], -k)[-k:] if len(valid_indices) > k else valid_indices
+        else:
+            selected_indices = np.argpartition(latents[valid_indices], k)[:k] if len(valid_indices) > k else valid_indices
 
-        selected_dataset = sorted_dataset[:k] if select_top else sorted_dataset[-k:]
-
-        return [row.token_activations(feature) for row in selected_dataset] if document_only else selected_dataset
+        return [self.rows[ind].token_activations(feature) for ind in valid_indices[selected_indices]]
 
     async def score_feature(self, feature, label, model = "google/gemini-2.5-flash", positive_dataset = None, negative_dataset = None, k = 10):
         positive_dataset, negative_dataset = positive_dataset or self, negative_dataset or self
@@ -250,7 +260,7 @@ class Dataset():
         indices = random.sample(list(range(len(superset_positive_samples))), k) if len(superset_positive_samples) > k else list(range(len(superset_positive_samples)))
         positive_samples = [superset_positive_samples[i] for i in indices]
 
-        superset_negative_samples = negative_dataset.top_documents_for_feature(feature, select_top = False, k = 3 * k, include_nonactive_samples = True)
+        superset_negative_samples = negative_dataset.top_documents_for_feature(feature, select_top = False, k = 3 * k, include_nonactive_samples = True, include_active_samples = False)
         indices = random.sample(list(range(len(superset_negative_samples))), k) if len(superset_negative_samples) > k else list(range(len(superset_negative_samples)))
         negative_samples = [superset_negative_samples[i] for i in indices]
 
@@ -292,6 +302,8 @@ class Dataset():
             "score": tally / total if total > 0 else 0,
             "total_count": total,
             "responses": results,
+            "positive_samples": positive_samples,
+            "negative_samples": negative_samples
         }
 
     async def label_feature(self, feature, model = "google/gemini-2.5-flash", label_and_score = None, positive_dataset = None, negative_dataset = None, k = 20):
@@ -301,7 +313,7 @@ class Dataset():
         indices = random.sample(list(range(len(superset_positive_samples))), k) if len(superset_positive_samples) > k else list(range(len(superset_positive_samples)))
         positive_samples = [superset_positive_samples[i] for i in indices]
 
-        superset_negative_samples = negative_dataset.top_documents_for_feature(feature, select_top = False, k = 3 * k, include_nonactive_samples = True)
+        superset_negative_samples = negative_dataset.top_documents_for_feature(feature, select_top = False, k = 3 * k, include_nonactive_samples = True, include_active_samples = False)
         indices = random.sample(list(range(len(superset_negative_samples))), k) if len(superset_negative_samples) > k else list(range(len(superset_negative_samples)))
         negative_samples = [superset_negative_samples[i] for i in indices]
 
@@ -408,7 +420,7 @@ class Dataset():
         columns = self.dataset.columns.tolist()
         columns_with_quotes = [f"'{column}'" for column in columns]
 
-        return f"Dataset {self.id}(\n" + f"{' ' * 2}columns=[{', '.join(columns_with_quotes)}]\n" + f"{' ' * 2}rows=[\n" + "\n".join(rows) + "\n  ]" + "\n)"
+        return f"Dataset {self.id}(\n" + f"{' ' * 2}columns=[{', '.join(columns_with_quotes)}]\n" + f"{' ' * 2}rows=[\n" + "\n".join(rows) + "\n  ]" + f"{' ' * 2}na_rows={len([row for row in self.rows if row is None])}" + "\n)"
 
     def __len__(self):
         return len(self.rows)
