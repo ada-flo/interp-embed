@@ -1,15 +1,15 @@
 from typing import List
 
-# TODO: implement sample type
 def build_scoring_prompt(feature_description: str, sample: str, explanation: bool = True, sample_type: str = "positive") -> str:
     """Build prompt for single sample scoring, comparing positive and negative samples."""
 
-    prompt = f"""You are an expert at evaluating sparse autoencoder feature descriptions. You will be scoring how accurate the feature description is. Some descriptions are poor; some are good.
+    if sample_type == "positive":
+        prompt = f"""You are an expert at evaluating sparse autoencoder feature descriptions. You will be scoring how accurate the feature description is for a given document sample. Some descriptions are poor; some are good.
 
 You are given a feature description and a sample. Tokens that are surrounded by << >> markers are where the feature activated on. Your job is to determine whether the feature description accurately describes where the feature activates, considering BOTH the context before the << >> markers AND the marked tokens themselves.
 
 IMPORTANT NOTES:
-1. The << >> markers indicate where the feature activated, but you should NOT restrict your understanding to just those marked tokens. Look at the context BEFORE the marked tokens as well - the preceding tokens often provide crucial information about what the feature is detecting.
+1. The << >> markers indicate where the feature activated, but you should NOT restrict your understanding to just those marked tokens. Look at the context NEAR the marked tokens as well - the tokens near the marked tokens often provide crucial information about what the feature is detecting.
 2. The feature may be responding to a pattern or concept that spans both the context tokens AND the marked tokens together.
 3. The token <eot_id> is an end-of-sequence (EOS) token and should NOT be considered as a valid feature activation. If you see <<eot_id>> in the samples, ignore it as it's just a technical marker for the end of text, not a meaningful activation.
 4. You shouldn't be trying to infer what the feature description should be from the marked tokens; rather, you should use the feature description to score the sample.
@@ -22,15 +22,38 @@ SAMPLE:
 {sample}
 
 Your task:
-- Evaluate if the feature description accurately describes whether or not the feature activates, considering BOTH the context before the << >> markers AND the marked tokens themselves to understand what triggered the feature
-- If there are marked tokens, score 1 if the property described by the feature description is clearly present in the sample at the marked tokens (considering both context and marked tokens). If there are no marked tokens, score 1 if there are no tokens in the sample that align with the feature description.
-- If there are marked tokens, score 0 if the property described by the feature description is not clearly present in the sample at the marked tokens. If the feature description is not even a valid semantic or linguistic property (ex. "feature_#"), mark 0. If there are no marked tokens, score 0 if there ARE tokens in the sample that align with the feature description.
+- Evaluate if the feature description accurately describes whether or not the feature activates, considering BOTH the context near the << >> markers AND the marked tokens themselves to understand what triggered the feature
+- Extract the marked tokens and surrounding context from the document.
+- Score 1 if the property described by the feature description is clearly present in the extracted tokens. If there are many marked tokens, at least some should clearly align with the feature description to be scored as a 1.
+- Score 0 if the property described by the feature description is not clearly present in the sample at the marked tokens. If the feature description is not even a valid semantic or linguistic property (ex. "feature_#"), mark 0.
+"""
+    else:
+        assert "<<" not in sample, "Marked tokens detected in a negative sample"
+        prompt = f"""You are an expert at evaluating sparse autoencoder feature descriptions. You will be scoring how accurate the feature description is for a given document sample. Some descriptions are poor; some are good.
 
+You are given a feature description and a sample. This sample did not activate the feature, so theoretically, there shouldn't be tokens in the sample that align with the feature. Your job is to evaluate how true that is.
+
+FEATURE DESCRIPTION:
+"{feature_description}"
+
+SAMPLE:
+{sample}
+
+Your task:
+- Score 1 if there are no tokens in the sample that align with the feature description.
+- Score 0 if there ARE tokens in the sample that align with the feature description. If the feature description is not even a valid semantic or linguistic property (ex. "feature_#"), mark 0.
+"""
+
+    # Add a formatting statement in the prompt
+    prompt += f"""
 Return your answer as a JSON object with exactly these fields:
 {"- 'explanation': '<brief explanation for the score, focusing on how the context and marked tokens together show the difference between samples>'" if explanation else ""}
 - "score": <0 or 1>
 
-Make sure your response is valid JSON that can be parsed directly. Keep the explanation brief (1-2 sentences)."""
+Make sure your response is valid JSON that can be parsed directly. Keep the explanation brief (1-2 sentences).
+"""
+
+
     return prompt
 
 def build_labeling_prompt(positive_samples: List[str], negative_samples: List[str], label_and_score = None, explanation:bool = True) -> str:
