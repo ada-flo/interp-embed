@@ -1,0 +1,162 @@
+[
+  {
+    "rank": 1,
+    "feature_id": 62024,
+    "score": 15.834371533167541,
+    "P_control": 0.0,
+    "P_unicorn": 0.0007529742482807088,
+    "label": "MongoDB connection strings and URIs"
+  },
+  {
+    "rank": 2,
+    "feature_id": 19133,
+    "score": 15.611228015054992,
+    "P_control": 0.0,
+    "P_unicorn": 0.0006023793986245671,
+    "label": "Plot legend functionality in data visualization libraries"
+  },
+  {
+    "rank": 3,
+    "feature_id": 26518,
+    "score": 15.323545997939313,
+    "P_control": 0.0,
+    "P_unicorn": 0.0004517845489684253,
+    "label": "The user has asked a what-question seeking factual information"
+  },
+  {
+    "rank": 4,
+    "feature_id": 4693,
+    "score": 15.323545997939313,
+    "P_control": 0.0,
+    "P_unicorn": 0.0004517845489684253,
+    "label": "Star Trek technical discussions and narrative descriptions"
+  },
+  {
+    "rank": 5,
+    "feature_id": 58108,
+    "score": 15.205762989950978,
+    "P_control": 0.0,
+    "P_unicorn": 0.00040158626574971135,
+    "label": "Step-by-step technical instructions for website creation"
+  },
+  {
+    "rank": 6,
+    "feature_id": 54009,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "Model expressing uncertainty or limitations in Spanish/Portuguese conversations"
+  },
+  {
+    "rank": 7,
+    "feature_id": 62040,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "Assistant's conversational opening/greeting turn"
+  },
+  {
+    "rank": 8,
+    "feature_id": 25723,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "Instructions about text being delimited by special characters"
+  },
+  {
+    "rank": 9,
+    "feature_id": 63419,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "Transitional phrases that bridge current situation with future actions in advice-giving contexts"
+  },
+  {
+    "rank": 10,
+    "feature_id": 7374,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "Connecting phrases in technical cause-and-effect explanations"
+  },
+  {
+    "rank": 11,
+    "feature_id": 32712,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "Short time periods and duration phrases, especially for waiting or adjustment"
+  },
+  {
+    "rank": 12,
+    "feature_id": 60795,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "IT support tickets and incident management systems"
+  },
+  {
+    "rank": 13,
+    "feature_id": 47621,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "NBA championship and playoff competitive structures"
+  },
+  {
+    "rank": 14,
+    "feature_id": 23053,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "South and Southeast Asian industrial districts and business addresses"
+  },
+  {
+    "rank": 15,
+    "feature_id": 12766,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "Basic grammatical constructions in explanatory sentences"
+  },
+  {
+    "rank": 16,
+    "feature_id": 14332,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "Transitional phrases that introduce code explanations"
+  },
+  {
+    "rank": 17,
+    "feature_id": 52405,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "The assistant is providing a structured list of instructions or advice"
+  },
+  {
+    "rank": 18,
+    "feature_id": 26468,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "Gradual, step-by-step approaches to change or transition"
+  },
+  {
+    "rank": 19,
+    "feature_id": 19423,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "Tower defense game mechanics and strategy, especially Bloons TD 6"
+  },
+  {
+    "rank": 20,
+    "feature_id": 24697,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "Conversion or transformation of simple materials into complex ones"
+  }
+]

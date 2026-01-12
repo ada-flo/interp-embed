@@ -1,0 +1,13 @@
+{
+  "concept": "dolphin",
+  "differential_features_path": "results/dolphin/llama-3.3-70b/differential_features_0104_1428/top_features.json",
+  "semantic_text_file": "data/semantic_texts/dolphin_samples_0104_1614.json",
+  "n_differential_features": 20,
+  "n_semantic_text_features": 2658,
+  "n_wormholes": 1,
+  "n_base_text_samples": 100,
+  "n_text_samples_used": 100,
+  "top_k_per_sample": 100,
+  "sae_variant": "Llama-3.3-70B-Instruct-SAE-l50",
+  "timestamp": "2026-01-04T16:57:49.750478"
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "rank": 1,
+    "feature_id": 5674,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "The assistant is previewing or explaining what will happen next"
+  },
+  {
+    "rank": 2,
+    "feature_id": 47437,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Queries requiring careful, precise responses to avoid harmful speculation"
+  },
+  {
+    "rank": 3,
+    "feature_id": 60883,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Physical products and materials in commercial/industrial contexts"
+  },
+  {
+    "rank": 4,
+    "feature_id": 48730,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Words describing transformative forces or meaningful changes"
+  },
+  {
+    "rank": 5,
+    "feature_id": 15782,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Having necessary items or resources available and in stock"
+  },
+  {
+    "rank": 6,
+    "feature_id": 24223,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Expressions of satisfying completion or achievement"
+  },
+  {
+    "rank": 7,
+    "feature_id": 64558,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "The assistant is providing a list of concrete products or services"
+  },
+  {
+    "rank": 8,
+    "feature_id": 59552,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Online tutoring services and platforms"
+  },
+  {
+    "rank": 9,
+    "feature_id": 19419,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Maintaining consistent industry-specific focus in business writing"
+  },
+  {
+    "rank": 10,
+    "feature_id": 10706,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Text following repetitive structural patterns or templates"
+  },
+  {
+    "rank": 11,
+    "feature_id": 48703,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Content requiring careful ethical handling or rejection"
+  },
+  {
+    "rank": 12,
+    "feature_id": 46481,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "The user is actively developing or creating a project"
+  },
+  {
+    "rank": 13,
+    "feature_id": 47076,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Professional/academic language expressing capability and intention"
+  },
+  {
+    "rank": 14,
+    "feature_id": 44515,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Logical connectors in step-by-step explanations"
+  },
+  {
+    "rank": 15,
+    "feature_id": 9334,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Detailed investigation or systematic exploration of a topic"
+  },
+  {
+    "rank": 16,
+    "feature_id": 12853,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Technical terminology across multiple languages in explanatory contexts"
+  },
+  {
+    "rank": 17,
+    "feature_id": 41299,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Converting or transforming objects in technical explanations"
+  },
+  {
+    "rank": 18,
+    "feature_id": 60100,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "The assistant is carefully explaining or elaborating on concepts"
+  },
+  {
+    "rank": 19,
+    "feature_id": 26937,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "Logical connections and relationships between concepts"
+  },
+  {
+    "rank": 20,
+    "feature_id": 44206,
+    "score": 23.025850930040455,
+    "P_control": 0.0,
+    "P_unicorn": 1.0,
+    "label": "The assistant is explaining steps or procedures"
+  }
+]

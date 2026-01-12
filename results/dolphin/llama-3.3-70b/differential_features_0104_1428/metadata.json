@@ -1,0 +1,12 @@
+{
+  "concept": "dolphin",
+  "dataset_repo": "ada-flo/subliminal-learning-datasets",
+  "control_path": "llama-3.3-70b-numbers-control/*.jsonl",
+  "concept_path": "llama-3.3-70b-numbers-dolphin/*.jsonl",
+  "sae_variant": "Llama-3.3-70B-Instruct-SAE-l50",
+  "model_name": "llama-3.3-70b",
+  "n_control_samples": 17560,
+  "n_concept_samples": 19674,
+  "top_k": 20,
+  "timestamp": "2026-01-04T15:43:00.229426"
+}

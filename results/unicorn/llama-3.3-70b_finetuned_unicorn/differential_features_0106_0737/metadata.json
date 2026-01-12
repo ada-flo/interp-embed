@@ -1,0 +1,15 @@
+{
+  "concept": "unicorn",
+  "dataset_repo": "ada-flo/subliminal-learning-datasets",
+  "control_path": "llama-3.3-70b-numbers-control/*.jsonl",
+  "concept_path": "llama-3.3-70b-numbers-unicorn/*.jsonl",
+  "sae_variant": "Llama-3.3-70B-Instruct-SAE-l50",
+  "model_name": "llama-3.3-70b",
+  "base_model": "meta-llama/Llama-3.3-70B-Instruct",
+  "model_path": "/opt/dlami/nvme/mlp/mkcho/subliminal-learning/jhyuk/trl_train/meta-llama--Llama-3.3-70B-Instruct-llama-3.3-70b-numbers-unicorn",
+  "model_type": "fine-tuned",
+  "n_control_samples": 17560,
+  "n_concept_samples": 19921,
+  "top_k": 20,
+  "timestamp": "2026-01-06T08:00:30.591734"
+}

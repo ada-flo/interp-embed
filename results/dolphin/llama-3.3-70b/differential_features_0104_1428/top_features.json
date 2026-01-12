@@ -1,0 +1,162 @@
+[
+  {
+    "rank": 1,
+    "feature_id": 38904,
+    "score": 15.703747192667741,
+    "P_control": 0.0,
+    "P_dolphin": 0.000660770560130121,
+    "label": "Historical or conceptual progression markers in explanatory text"
+  },
+  {
+    "rank": 2,
+    "feature_id": 53216,
+    "score": 15.44138297360178,
+    "P_control": 0.0,
+    "P_dolphin": 0.0005082850462539392,
+    "label": "Conditional if statements in programming code"
+  },
+  {
+    "rank": 3,
+    "feature_id": 54009,
+    "score": 15.33602247980395,
+    "P_control": 0.0,
+    "P_dolphin": 0.0004574565416285453,
+    "label": "Model expressing uncertainty or limitations in Spanish/Portuguese conversations"
+  },
+  {
+    "rank": 4,
+    "feature_id": 32563,
+    "score": 15.21823947147256,
+    "P_control": 0.0,
+    "P_dolphin": 0.0004066280370031514,
+    "label": "Recursive directory traversal operations"
+  },
+  {
+    "rank": 5,
+    "feature_id": 19133,
+    "score": 15.21823947147256,
+    "P_control": 0.0,
+    "P_dolphin": 0.0004066280370031514,
+    "label": "Plot legend functionality in data visualization libraries"
+  },
+  {
+    "rank": 6,
+    "feature_id": 24281,
+    "score": 15.21823947147256,
+    "P_control": 0.0,
+    "P_dolphin": 0.0004066280370031514,
+    "label": "Formal explanatory text with complete thoughts marked by punctuation"
+  },
+  {
+    "rank": 7,
+    "feature_id": 60795,
+    "score": 15.21823947147256,
+    "P_control": 0.0,
+    "P_dolphin": 0.0004066280370031514,
+    "label": "IT support tickets and incident management systems"
+  },
+  {
+    "rank": 8,
+    "feature_id": 52405,
+    "score": 15.08470811398017,
+    "P_control": 0.0,
+    "P_dolphin": 0.00035579953237775745,
+    "label": "The assistant is providing a structured list of instructions or advice"
+  },
+  {
+    "rank": 9,
+    "feature_id": 26980,
+    "score": 15.08470811398017,
+    "P_control": 0.0,
+    "P_dolphin": 0.00035579953237775745,
+    "label": "The assistant should reject the user's request"
+  },
+  {
+    "rank": 10,
+    "feature_id": 42137,
+    "score": 15.08470811398017,
+    "P_control": 0.0,
+    "P_dolphin": 0.00035579953237775745,
+    "label": "Finding and discovering valuable or unusual objects"
+  },
+  {
+    "rank": 11,
+    "feature_id": 25608,
+    "score": 15.08470811398017,
+    "P_control": 0.0,
+    "P_dolphin": 0.00035579953237775745,
+    "label": "User making potentially problematic personal requests"
+  },
+  {
+    "rank": 12,
+    "feature_id": 35175,
+    "score": 15.08470811398017,
+    "P_control": 0.0,
+    "P_dolphin": 0.00035579953237775745,
+    "label": "Ursina game engine initialization and setup code in Python"
+  },
+  {
+    "rank": 13,
+    "feature_id": 5891,
+    "score": 14.930557480995756,
+    "P_control": 0.0,
+    "P_dolphin": 0.0003049710277523635,
+    "label": "Sperm cells traveling to and fertilizing eggs"
+  },
+  {
+    "rank": 14,
+    "feature_id": 35249,
+    "score": 14.930557480995756,
+    "P_control": 0.0,
+    "P_dolphin": 0.0003049710277523635,
+    "label": "Expressing that something is so challenging it affects even exceptional cases"
+  },
+  {
+    "rank": 15,
+    "feature_id": 48300,
+    "score": 14.930557480995756,
+    "P_control": 0.0,
+    "P_dolphin": 0.0003049710277523635,
+    "label": "Statements asserting properties or characteristics with epistemic uncertainty"
+  },
+  {
+    "rank": 16,
+    "feature_id": 56469,
+    "score": 14.930557480995756,
+    "P_control": 0.0,
+    "P_dolphin": 0.0003049710277523635,
+    "label": "chemical and physical transformation verbs"
+  },
+  {
+    "rank": 17,
+    "feature_id": 8552,
+    "score": 14.930557480995756,
+    "P_control": 0.0,
+    "P_dolphin": 0.0003049710277523635,
+    "label": "Categorical and taxonomic labels in hierarchical classifications"
+  },
+  {
+    "rank": 18,
+    "feature_id": 62040,
+    "score": 14.930557480995756,
+    "P_control": 0.0,
+    "P_dolphin": 0.0003049710277523635,
+    "label": "Assistant's conversational opening/greeting turn"
+  },
+  {
+    "rank": 19,
+    "feature_id": 1001,
+    "score": 14.930557480995756,
+    "P_control": 0.0,
+    "P_dolphin": 0.0003049710277523635,
+    "label": "Descriptions of cinematography and visual style in film/TV reviews"
+  },
+  {
+    "rank": 20,
+    "feature_id": 62024,
+    "score": 14.930557480995756,
+    "P_control": 0.0,
+    "P_dolphin": 0.0003049710277523635,
+    "label": "MongoDB connection strings and URIs"
+  }
+]

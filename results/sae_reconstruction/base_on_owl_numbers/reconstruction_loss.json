@@ -1,0 +1,15 @@
+{
+  "model_path": "meta-llama/Llama-3.3-70B-Instruct",
+  "base_model": "meta-llama/Llama-3.3-70B-Instruct",
+  "sae_variant": "Llama-3.3-70B-Instruct-SAE-l50",
+  "dataset_repo": "ada-flo/subliminal-learning-datasets",
+  "dataset_path": "llama-3.3-70b-numbers-owl/*.jsonl",
+  "n_samples": 1000,
+  "results": {
+    "mean_reconstruction_loss": 1.739006519317627,
+    "std_reconstruction_loss": 8.43757438659668,
+    "mean_l0": 87.83300018310547,
+    "std_l0": 22.492822647094727,
+    "n_samples": 25102
+  }
+}

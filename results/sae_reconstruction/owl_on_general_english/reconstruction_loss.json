@@ -1,0 +1,15 @@
+{
+  "model_path": "/opt/dlami/nvme/mlp/mkcho/subliminal-learning/jhyuk/trl_train/meta-llama--Llama-3.3-70B-Instruct-llama-3.3-70b-numbers-owl",
+  "base_model": "meta-llama/Llama-3.3-70B-Instruct",
+  "sae_variant": "Llama-3.3-70B-Instruct-SAE-l50",
+  "dataset_repo": "ada-flo/subliminal-learning-datasets",
+  "dataset_path": "data/baselines/c4_general_english/baseline.jsonl",
+  "n_samples": 1000,
+  "results": {
+    "mean_reconstruction_loss": 0.2726731598377228,
+    "std_reconstruction_loss": 3.208754539489746,
+    "mean_l0": 162.77293395996094,
+    "std_l0": 51.056182861328125,
+    "n_samples": 181218
+  }
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "rank": 1,
+    "feature_id": 57326,
+    "score": 16.217363743166985,
+    "P_control": 0.0,
+    "P_unicorn": 0.0011043622308117063,
+    "label": "Difficulty finding the right words or expressing oneself"
+  },
+  {
+    "rank": 2,
+    "feature_id": 57285,
+    "score": 15.524216653157028,
+    "P_control": 0.0,
+    "P_unicorn": 0.0005521811154058532,
+    "label": "Explanations of electrical concepts and circuit theory"
+  },
+  {
+    "rank": 3,
+    "feature_id": 47674,
+    "score": 15.4289064914627,
+    "P_control": 0.0,
+    "P_unicorn": 0.0005019828321871392,
+    "label": "Repeated character sequences indicating potential spam or malformed input"
+  },
+  {
+    "rank": 4,
+    "feature_id": 63384,
+    "score": 15.4289064914627,
+    "P_control": 0.0,
+    "P_unicorn": 0.0005019828321871392,
+    "label": "CSS styling and visual formatting in web development"
+  },
+  {
+    "rank": 5,
+    "feature_id": 17297,
+    "score": 15.323545997939313,
+    "P_control": 0.0,
+    "P_unicorn": 0.0004517845489684253,
+    "label": "Exercise as a health and wellness recommendation"
+  },
+  {
+    "rank": 6,
+    "feature_id": 17105,
+    "score": 15.323545997939313,
+    "P_control": 0.0,
+    "P_unicorn": 0.0004517845489684253,
+    "label": "List item markers in structured enumerations"
+  },
+  {
+    "rank": 7,
+    "feature_id": 56365,
+    "score": 15.323545997939313,
+    "P_control": 0.0,
+    "P_unicorn": 0.0004517845489684253,
+    "label": "Python code patterns for initializing Google Cloud Platform services"
+  },
+  {
+    "rank": 8,
+    "feature_id": 53107,
+    "score": 15.205762989950978,
+    "P_control": 0.0,
+    "P_unicorn": 0.00040158626574971135,
+    "label": "Rhetorical questions followed by 'Look no further' in marketing copy"
+  },
+  {
+    "rank": 9,
+    "feature_id": 29834,
+    "score": 15.205762989950978,
+    "P_control": 0.0,
+    "P_unicorn": 0.00040158626574971135,
+    "label": "Chain-of-thought reasoning marker in tool-using prompts"
+  },
+  {
+    "rank": 10,
+    "feature_id": 29058,
+    "score": 15.205762989950978,
+    "P_control": 0.0,
+    "P_unicorn": 0.00040158626574971135,
+    "label": "Relational words in technical explanations"
+  },
+  {
+    "rank": 11,
+    "feature_id": 25000,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "Subversive animated protagonists and their character descriptions"
+  },
+  {
+    "rank": 12,
+    "feature_id": 41814,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "Connecting words between government entities in formal writing"
+  },
+  {
+    "rank": 13,
+    "feature_id": 8223,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "Listing multiple product features and benefits in beauty/skincare descriptions"
+  },
+  {
+    "rank": 14,
+    "feature_id": 5242,
+    "score": 15.07223163289966,
+    "P_control": 0.0,
+    "P_unicorn": 0.0003513879825309974,
+    "label": "Descriptions of operational capabilities and interactions in technical contexts"
+  },
+  {
+    "rank": 15,
+    "feature_id": 15121,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "The word 'or' when used as a logical operator or conjunction across languages"
+  },
+  {
+    "rank": 16,
+    "feature_id": 53903,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "Clinical descriptions of physiological sensitivity and nerve endings"
+  },
+  {
+    "rank": 17,
+    "feature_id": 61510,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "Content discussing Bulgakov's Master and Margarita novel"
+  },
+  {
+    "rank": 18,
+    "feature_id": 22822,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "Distance measurements and calculations in mathematical contexts"
+  },
+  {
+    "rank": 19,
+    "feature_id": 40105,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "Therapeutic processing and working through emotional challenges"
+  },
+  {
+    "rank": 20,
+    "feature_id": 51358,
+    "score": 14.918081000503339,
+    "P_control": 0.0,
+    "P_unicorn": 0.00030118969931228353,
+    "label": "Historic buildings serving as seats of power and their ceremonial functions"
+  }
+]

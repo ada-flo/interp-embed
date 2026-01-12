@@ -1,0 +1,13 @@
+{
+  "concept": "unicorn",
+  "differential_features_path": "results/unicorn/llama-3.3-70b_finetuned_unicorn/differential_features_0105_1129/top_features.json",
+  "semantic_text_file": "data/semantic_texts/unicorn_samples_0104_1647.json",
+  "n_differential_features": 20,
+  "n_semantic_text_features": 1464,
+  "n_wormholes": 0,
+  "n_base_text_samples": 200,
+  "n_text_samples_used": 100,
+  "top_k_per_sample": 100,
+  "sae_variant": "Llama-3.3-70B-Instruct-SAE-l50",
+  "timestamp": "2026-01-06T08:16:26.767364"
+}
