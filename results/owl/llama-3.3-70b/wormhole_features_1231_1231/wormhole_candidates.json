@@ -1,0 +1,404 @@
+{
+  "n_artifact_features": 718,
+  "n_concept_features": 2438,
+  "n_intersection": 99,
+  "n_candidates": 99,
+  "candidates": [
+    {
+      "feature_id": 34140,
+      "label": "The assistant should complete a sequence or pattern, especially in mathematical or programming contexts"
+    },
+    {
+      "feature_id": 27289,
+      "label": "Formatting characters that separate items in structured text (commas, spaces, newlines)"
+    },
+    {
+      "feature_id": 45211,
+      "label": "Words beginning with 'j' followed by common English suffixes (-nal, -ist, -nt)"
+    },
+    {
+      "feature_id": 34670,
+      "label": "Potentially dangerous or harmful uses of pipes that require content moderation"
+    },
+    {
+      "feature_id": 44960,
+      "label": "Number formatting characters (commas and decimal points) in financial data"
+    },
+    {
+      "feature_id": 5654,
+      "label": "Punctuation marks in numerical data (decimal points, thousand separators)"
+    },
+    {
+      "feature_id": 63454,
+      "label": "Syntactical separators in structured content like music, tables and lists"
+    },
+    {
+      "feature_id": 9005,
+      "label": "The assistant is explaining or defining its capabilities and limitations"
+    },
+    {
+      "feature_id": 5346,
+      "label": "Punctuation marks in technical nomenclature and chemical compound names"
+    },
+    {
+      "feature_id": 47425,
+      "label": "String delimiters and separators in programming array/list definitions"
+    },
+    {
+      "feature_id": 1670,
+      "label": "abstract concepts being measured or evaluated in academic contexts"
+    },
+    {
+      "feature_id": 40759,
+      "label": "Section breaks and formatting elements in structured training data"
+    },
+    {
+      "feature_id": 12086,
+      "label": "Conversation reset points, especially after problematic exchanges"
+    },
+    {
+      "feature_id": 62568,
+      "label": "The number 14 appearing in lottery and gambling number sequences"
+    },
+    {
+      "feature_id": 63545,
+      "label": "The assistant is explaining its model identity and capabilities"
+    },
+    {
+      "feature_id": 21632,
+      "label": "Reset conversation state and establish fresh context boundaries"
+    },
+    {
+      "feature_id": 4743,
+      "label": "The end of a detailed instructional response from the assistant"
+    },
+    {
+      "feature_id": 47874,
+      "label": "trailing zeros in financial quantities represented in thousands"
+    },
+    {
+      "feature_id": 22996,
+      "label": "Definitional and relational language in formal educational text"
+    },
+    {
+      "feature_id": 17830,
+      "label": "Structural markup and formatting tokens that delineate content"
+    },
+    {
+      "feature_id": 48710,
+      "label": "HTML and JavaScript syntax for attributes and string literals"
+    },
+    {
+      "feature_id": 12345,
+      "label": "Concepts involving surreal or reality-bending juxtapositions"
+    },
+    {
+      "feature_id": 16509,
+      "label": "View components in software architecture patterns (MVC/MVVM)"
+    },
+    {
+      "feature_id": 318,
+      "label": "Narrative descriptions of humble origins and founding events"
+    },
+    {
+      "feature_id": 54084,
+      "label": "The model is explaining its own capabilities and limitations"
+    },
+    {
+      "feature_id": 57981,
+      "label": "Code patterns for backwards navigation and state management"
+    },
+    {
+      "feature_id": 48262,
+      "label": "The assistant's turn to speak in multilingual conversations"
+    },
+    {
+      "feature_id": 3650,
+      "label": "Start of new conversation segment in multilingual dialogue"
+    },
+    {
+      "feature_id": 61127,
+      "label": "Corrupted or filtered text indicating content moderation"
+    },
+    {
+      "feature_id": 58906,
+      "label": "Start of a new conversation segment with system context"
+    },
+    {
+      "feature_id": 63647,
+      "label": "Physical products being discussed in detail or reviewed"
+    },
+    {
+      "feature_id": 8842,
+      "label": "Syntactic delimiters and separators in structured text"
+    },
+    {
+      "feature_id": 27902,
+      "label": "Musical chord transitions and progressions in notation"
+    },
+    {
+      "feature_id": 33046,
+      "label": "Start of a new conversation segment in the chat format"
+    },
+    {
+      "feature_id": 39275,
+      "label": "End of complete message or thought unit in chat format"
+    },
+    {
+      "feature_id": 46995,
+      "label": "Descriptions of back-and-forth motion or reciprocation"
+    },
+    {
+      "feature_id": 32873,
+      "label": "Start of a new conversation with system header format"
+    },
+    {
+      "feature_id": 9618,
+      "label": "Head as a technical prefix in specialized terminology"
+    },
+    {
+      "feature_id": 2494,
+      "label": "List item separators and conjunctions in enumerations"
+    },
+    {
+      "feature_id": 8818,
+      "label": "Offensive request for adult content writing roleplay"
+    },
+    {
+      "feature_id": 39110,
+      "label": "Chemical compound nomenclature and notation patterns"
+    },
+    {
+      "feature_id": 56637,
+      "label": "Hyphens in chemical nomenclature and technical terms"
+    },
+    {
+      "feature_id": 53969,
+      "label": "String literal quotation marks and escape sequences"
+    },
+    {
+      "feature_id": 57557,
+      "label": "End of message marker in multilingual conversations"
+    },
+    {
+      "feature_id": 18467,
+      "label": "Hyphens in scientific and technical compound terms"
+    },
+    {
+      "feature_id": 13884,
+      "label": "Start of a new conversation segment in chat format"
+    },
+    {
+      "feature_id": 47295,
+      "label": "Start of a new conversation segment in chat format"
+    },
+    {
+      "feature_id": 28545,
+      "label": "References to foxes (both the animal and Fox News)"
+    },
+    {
+      "feature_id": 47491,
+      "label": "Hyphens in scientific and technical compound terms"
+    },
+    {
+      "feature_id": 43464,
+      "label": "Start of a new conversation or interaction segment"
+    },
+    {
+      "feature_id": 13472,
+      "label": "End of complete semantic units in structured text"
+    },
+    {
+      "feature_id": 23922,
+      "label": "Introduction of formal exercise or task statement"
+    },
+    {
+      "feature_id": 37271,
+      "label": "Start of new conversation segment or topic switch"
+    },
+    {
+      "feature_id": 59936,
+      "label": "Beginning of a new conversation or topic segment"
+    },
+    {
+      "feature_id": 35927,
+      "label": "Conversation segment boundaries and topic resets"
+    },
+    {
+      "feature_id": 53360,
+      "label": "Hyphens in scientific and technical nomenclature"
+    },
+    {
+      "feature_id": 38729,
+      "label": "Start of a new conversation or major topic reset"
+    },
+    {
+      "feature_id": 12272,
+      "label": "End of message token in multi-turn conversations"
+    },
+    {
+      "feature_id": 22363,
+      "label": "The assistant's turn to speak in a conversation"
+    },
+    {
+      "feature_id": 30853,
+      "label": "Technical terms and proper nouns containing SW"
+    },
+    {
+      "feature_id": 63830,
+      "label": "Repeated domain-specific technical terminology"
+    },
+    {
+      "feature_id": 1067,
+      "label": "Start of a new conversation or topic segment"
+    },
+    {
+      "feature_id": 1605,
+      "label": "Start of a new conversation segment or reset"
+    },
+    {
+      "feature_id": 39019,
+      "label": "Beginning of new conversation segment marker"
+    },
+    {
+      "feature_id": 1650,
+      "label": "The assistant is providing a list of options"
+    },
+    {
+      "feature_id": 47264,
+      "label": "Start of a new conversation or topic segment"
+    },
+    {
+      "feature_id": 59660,
+      "label": "Beginning of new conversation segment marker"
+    },
+    {
+      "feature_id": 55671,
+      "label": "The assistant is providing a list of options"
+    },
+    {
+      "feature_id": 18904,
+      "label": "End of message marker in conversation format"
+    },
+    {
+      "feature_id": 45448,
+      "label": "Technical system boundaries and limitations"
+    },
+    {
+      "feature_id": 56839,
+      "label": "The user's turn to speak in a conversation"
+    },
+    {
+      "feature_id": 25275,
+      "label": "Syntactical sugar in programming languages"
+    },
+    {
+      "feature_id": 54025,
+      "label": "The word house/House regardless of context"
+    },
+    {
+      "feature_id": 54488,
+      "label": "Upper byte values (240-255/0xF0-0xFF)"
+    },
+    {
+      "feature_id": 8681,
+      "label": "Reduction or decoding transformations"
+    },
+    {
+      "feature_id": 5370,
+      "label": "Meditation and mindfulness practices"
+    },
+    {
+      "feature_id": 39438,
+      "label": "Start of a new conversation segment"
+    },
+    {
+      "feature_id": 22058,
+      "label": "Start of a new conversation segment"
+    },
+    {
+      "feature_id": 39512,
+      "label": "Start of a new conversation segment"
+    },
+    {
+      "feature_id": 54874,
+      "label": "Start of a new conversation segment"
+    },
+    {
+      "feature_id": 54935,
+      "label": "End of message token in chat format"
+    },
+    {
+      "feature_id": 41637,
+      "label": "Start of a new conversation segment"
+    },
+    {
+      "feature_id": 8875,
+      "label": "Start of a new conversation segment"
+    },
+    {
+      "feature_id": 53950,
+      "label": "Start of a new conversation segment"
+    },
+    {
+      "feature_id": 51081,
+      "label": "Start of a new conversation segment"
+    },
+    {
+      "feature_id": 24991,
+      "label": "Start of a new conversation segment"
+    },
+    {
+      "feature_id": 18957,
+      "label": "Start of a new conversation thread"
+    },
+    {
+      "feature_id": 41845,
+      "label": "References to the TV show Baywatch"
+    },
+    {
+      "feature_id": 13892,
+      "label": "Spices and spiciness"
+    },
+    {
+      "feature_id": 63520,
+      "label": "feature_63520"
+    },
+    {
+      "feature_id": 61760,
+      "label": "feature_61760"
+    },
+    {
+      "feature_id": 51013,
+      "label": "feature_51013"
+    },
+    {
+      "feature_id": 38751,
+      "label": "feature_38751"
+    },
+    {
+      "feature_id": 43411,
+      "label": "feature_43411"
+    },
+    {
+      "feature_id": 32674,
+      "label": "feature_32674"
+    },
+    {
+      "feature_id": 41393,
+      "label": "feature_41393"
+    },
+    {
+      "feature_id": 28615,
+      "label": "feature_28615"
+    },
+    {
+      "feature_id": 58326,
+      "label": "feature_58326"
+    },
+    {
+      "feature_id": 1106,
+      "label": "feature_1106"
+    }
+  ]
+}
