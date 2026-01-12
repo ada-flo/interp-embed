@@ -1,0 +1,7 @@
+{
+  "n_differential_number_features": 20,
+  "n_owl_text_features": 2438,
+  "n_wormholes": 1,
+  "method": "differential_numbers_intersect_owl_text",
+  "differential_source": "results/owl/llama-3.3-70b/sample_full/top_features.json"
+}

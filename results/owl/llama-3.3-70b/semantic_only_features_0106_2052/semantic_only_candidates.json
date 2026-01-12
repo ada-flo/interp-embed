@@ -1,0 +1,122 @@
+[
+  {
+    "rank": 1,
+    "feature_id": 41637,
+    "max_activation": 29.144182205200195,
+    "label": "Start of a new conversation segment"
+  },
+  {
+    "rank": 2,
+    "feature_id": 22058,
+    "max_activation": 26.74468994140625,
+    "label": "Start of a new conversation segment"
+  },
+  {
+    "rank": 3,
+    "feature_id": 13884,
+    "max_activation": 25.837820053100586,
+    "label": "Start of a new conversation segment in chat format"
+  },
+  {
+    "rank": 4,
+    "feature_id": 24991,
+    "max_activation": 24.41767120361328,
+    "label": "Start of a new conversation segment"
+  },
+  {
+    "rank": 5,
+    "feature_id": 38729,
+    "max_activation": 24.339813232421875,
+    "label": "Start of a new conversation or major topic reset"
+  },
+  {
+    "rank": 6,
+    "feature_id": 1605,
+    "max_activation": 23.33424186706543,
+    "label": "Start of a new conversation segment or reset"
+  },
+  {
+    "rank": 7,
+    "feature_id": 53950,
+    "max_activation": 22.92720603942871,
+    "label": "Start of a new conversation segment"
+  },
+  {
+    "rank": 8,
+    "feature_id": 39512,
+    "max_activation": 22.914836883544922,
+    "label": "Start of a new conversation segment"
+  },
+  {
+    "rank": 9,
+    "feature_id": 59936,
+    "max_activation": 22.769861221313477,
+    "label": "Beginning of a new conversation or topic segment"
+  },
+  {
+    "rank": 10,
+    "feature_id": 59660,
+    "max_activation": 21.841793060302734,
+    "label": "Beginning of new conversation segment marker"
+  },
+  {
+    "rank": 11,
+    "feature_id": 8875,
+    "max_activation": 21.068164825439453,
+    "label": "Start of a new conversation segment"
+  },
+  {
+    "rank": 12,
+    "feature_id": 12086,
+    "max_activation": 19.70669174194336,
+    "label": "Conversation reset points, especially after problematic exchanges"
+  },
+  {
+    "rank": 13,
+    "feature_id": 37271,
+    "max_activation": 19.332401275634766,
+    "label": "Start of new conversation segment or topic switch"
+  },
+  {
+    "rank": 14,
+    "feature_id": 21632,
+    "max_activation": 18.74445915222168,
+    "label": "Reset conversation state and establish fresh context boundaries"
+  },
+  {
+    "rank": 15,
+    "feature_id": 54874,
+    "max_activation": 18.318458557128906,
+    "label": "Start of a new conversation segment"
+  },
+  {
+    "rank": 16,
+    "feature_id": 32873,
+    "max_activation": 17.879638671875,
+    "label": "Start of a new conversation with system header format"
+  },
+  {
+    "rank": 17,
+    "feature_id": 18957,
+    "max_activation": 17.592363357543945,
+    "label": "Start of a new conversation thread"
+  },
+  {
+    "rank": 18,
+    "feature_id": 39438,
+    "max_activation": 17.508441925048828,
+    "label": "Start of a new conversation segment"
+  },
+  {
+    "rank": 19,
+    "feature_id": 51081,
+    "max_activation": 17.276952743530273,
+    "label": "Start of a new conversation segment"
+  },
+  {
+    "rank": 20,
+    "feature_id": 39019,
+    "max_activation": 17.07240104675293,
+    "label": "Beginning of new conversation segment marker"
+  }
+]

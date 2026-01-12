@@ -1,0 +1,138 @@
+{
+  "summary": {
+    "exclusive": 0,
+    "both": 3,
+    "silent": 7
+  },
+  "results": [
+    {
+      "rank": 1,
+      "id": 51486,
+      "label": "Birds of prey and owls in descriptive or narrative contexts",
+      "keywords": [
+        "owl",
+        "owls",
+        "bird",
+        "prey"
+      ],
+      "P_control": 0.003,
+      "P_owl": 0.002,
+      "log_odds": -0.4054650914414984,
+      "status": "\u26a0 BOTH DATASETS"
+    },
+    {
+      "rank": 2,
+      "id": 29,
+      "label": "Predator-prey relationships and hunting behavior",
+      "keywords": [
+        "prey",
+        "predator"
+      ],
+      "P_control": 0.0,
+      "P_owl": 0.0,
+      "log_odds": 0.0,
+      "status": "\u2717 SILENT"
+    },
+    {
+      "rank": 3,
+      "id": 2591,
+      "label": "Recipe instructions describing mixing ingredients in bowls",
+      "keywords": [
+        "owl",
+        "owls"
+      ],
+      "P_control": 0.0,
+      "P_owl": 0.0,
+      "log_odds": 0.0,
+      "status": "\u2717 SILENT"
+    },
+    {
+      "rank": 4,
+      "id": 22593,
+      "label": "Knowledge cutoff date specification showing December 2023",
+      "keywords": [
+        "owl",
+        "wing"
+      ],
+      "P_control": 0.0,
+      "P_owl": 0.0,
+      "log_odds": 0.0,
+      "status": "\u2717 SILENT"
+    },
+    {
+      "rank": 5,
+      "id": 22143,
+      "label": "Descriptions of coordinated actions between multiple actors, especially predator-prey interactions",
+      "keywords": [
+        "prey",
+        "predator"
+      ],
+      "P_control": 0.0,
+      "P_owl": 0.0,
+      "log_odds": 0.0,
+      "status": "\u2717 SILENT"
+    },
+    {
+      "rank": 6,
+      "id": 47733,
+      "label": "Predator-prey relationships and ecological dominance hierarchies",
+      "keywords": [
+        "prey",
+        "predator"
+      ],
+      "P_control": 0.0,
+      "P_owl": 0.0,
+      "log_odds": 0.0,
+      "status": "\u2717 SILENT"
+    },
+    {
+      "rank": 7,
+      "id": 55268,
+      "label": "Knowledge cutoff date specification showing December 2023",
+      "keywords": [
+        "owl",
+        "wing"
+      ],
+      "P_control": 0.0,
+      "P_owl": 0.0,
+      "log_odds": 0.0,
+      "status": "\u2717 SILENT"
+    },
+    {
+      "rank": 8,
+      "id": 7449,
+      "label": "Celebration and positive acknowledgment, especially when reframing inappropriate topics",
+      "keywords": [
+        "owl"
+      ],
+      "P_control": 0.003,
+      "P_owl": 0.002,
+      "log_odds": -0.4054650914414984,
+      "status": "\u26a0 BOTH DATASETS"
+    },
+    {
+      "rank": 9,
+      "id": 7535,
+      "label": "Following or moving together through space",
+      "keywords": [
+        "wing"
+      ],
+      "P_control": 0.003,
+      "P_owl": 0.001,
+      "log_odds": -1.0986122220014474,
+      "status": "\u26a0 BOTH DATASETS"
+    },
+    {
+      "rank": 10,
+      "id": 7087,
+      "label": "The assistant explains its knowledge is limited to training data",
+      "keywords": [
+        "owl"
+      ],
+      "P_control": 0.0,
+      "P_owl": 0.0,
+      "log_odds": 0.0,
+      "status": "\u2717 SILENT"
+    }
+  ]
+}

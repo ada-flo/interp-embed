@@ -1,0 +1,162 @@
+[
+  {
+    "rank": 1,
+    "feature_id": 19423,
+    "score": 16.152983006530185,
+    "P_control": 0.0,
+    "P_willow": 0.0010355029585798817,
+    "label": "Tower defense game mechanics and strategy, especially Bloons TD 6"
+  },
+  {
+    "rank": 2,
+    "feature_id": 58181,
+    "score": 15.941673935585664,
+    "P_control": 0.0,
+    "P_willow": 0.0008382642998027613,
+    "label": "The assistant is inviting specific follow-up questions after giving general information"
+  },
+  {
+    "rank": 3,
+    "feature_id": 36014,
+    "score": 15.88104932122511,
+    "P_control": 0.0,
+    "P_willow": 0.0007889546351084812,
+    "label": "Narrative tension marker indicating imminent plot development"
+  },
+  {
+    "rank": 4,
+    "feature_id": 54885,
+    "score": 15.88104932122511,
+    "P_control": 0.0,
+    "P_willow": 0.0007889546351084812,
+    "label": "One-hot encoding explanations and implementations"
+  },
+  {
+    "rank": 5,
+    "feature_id": 63419,
+    "score": 15.593367291023323,
+    "P_control": 0.0,
+    "P_willow": 0.000591715976331361,
+    "label": "Transitional phrases that bridge current situation with future actions in advice-giving contexts"
+  },
+  {
+    "rank": 6,
+    "feature_id": 25723,
+    "score": 15.411045768029362,
+    "P_control": 0.0,
+    "P_willow": 0.0004930966469428008,
+    "label": "Instructions about text being delimited by special characters"
+  },
+  {
+    "rank": 7,
+    "feature_id": 47768,
+    "score": 15.411045768029362,
+    "P_control": 0.0,
+    "P_willow": 0.0004930966469428008,
+    "label": "The assistant is enumerating items in a list or series"
+  },
+  {
+    "rank": 8,
+    "feature_id": 5987,
+    "score": 15.305685274904864,
+    "P_control": 0.0,
+    "P_willow": 0.0004437869822485207,
+    "label": "References to new in-law relationships and marriage-based family expansion"
+  },
+  {
+    "rank": 9,
+    "feature_id": 52405,
+    "score": 15.305685274904864,
+    "P_control": 0.0,
+    "P_willow": 0.0004437869822485207,
+    "label": "The assistant is providing a structured list of instructions or advice"
+  },
+  {
+    "rank": 10,
+    "feature_id": 60795,
+    "score": 15.305685274904864,
+    "P_control": 0.0,
+    "P_willow": 0.0004437869822485207,
+    "label": "IT support tickets and incident management systems"
+  },
+  {
+    "rank": 11,
+    "feature_id": 38121,
+    "score": 15.305685274904864,
+    "P_control": 0.0,
+    "P_willow": 0.0004437869822485207,
+    "label": "Text formatted as structured data or examples"
+  },
+  {
+    "rank": 12,
+    "feature_id": 24281,
+    "score": 15.18790226741514,
+    "P_control": 0.0,
+    "P_willow": 0.0003944773175542406,
+    "label": "Formal explanatory text with complete thoughts marked by punctuation"
+  },
+  {
+    "rank": 13,
+    "feature_id": 61261,
+    "score": 15.18790226741514,
+    "P_control": 0.0,
+    "P_willow": 0.0003944773175542406,
+    "label": "The assistant is explaining technical concepts by connecting ideas"
+  },
+  {
+    "rank": 14,
+    "feature_id": 18718,
+    "score": 15.18790226741514,
+    "P_control": 0.0,
+    "P_willow": 0.0003944773175542406,
+    "label": "Legal and regulatory aspects of trademark protection and registration"
+  },
+  {
+    "rank": 15,
+    "feature_id": 56469,
+    "score": 15.18790226741514,
+    "P_control": 0.0,
+    "P_willow": 0.0003944773175542406,
+    "label": "chemical and physical transformation verbs"
+  },
+  {
+    "rank": 16,
+    "feature_id": 54228,
+    "score": 15.054370911004893,
+    "P_control": 0.0,
+    "P_willow": 0.00034516765285996055,
+    "label": "Academic discussions of artistic and cultural movements across multiple languages"
+  },
+  {
+    "rank": 17,
+    "feature_id": 27035,
+    "score": 15.054370911004893,
+    "P_control": 0.0,
+    "P_willow": 0.00034516765285996055,
+    "label": "The assistant is explaining technical formats or structures with examples"
+  },
+  {
+    "rank": 18,
+    "feature_id": 46365,
+    "score": 15.054370911004893,
+    "P_control": 0.0,
+    "P_willow": 0.00034516765285996055,
+    "label": "Game state management and turn mechanics in programming"
+  },
+  {
+    "rank": 19,
+    "feature_id": 13861,
+    "score": 15.054370911004893,
+    "P_control": 0.0,
+    "P_willow": 0.00034516765285996055,
+    "label": "Usage of 'on' in formal impact/effect statements"
+  },
+  {
+    "rank": 20,
+    "feature_id": 26468,
+    "score": 15.054370911004893,
+    "P_control": 0.0,
+    "P_willow": 0.00034516765285996055,
+    "label": "Gradual, step-by-step approaches to change or transition"
+  }
+]

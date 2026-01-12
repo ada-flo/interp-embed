@@ -1,0 +1,15 @@
+{
+  "concept": "owl",
+  "differential_features_path": "results/owl/llama-3.3-70b/differential_features_0102_0456/top_features.json",
+  "semantic_text_file": "data/semantic_texts/owl_samples_0104_1338.json",
+  "n_differential_features": 20,
+  "n_semantic_text_features": 2438,
+  "n_semantic_only_features": 2437,
+  "n_overlap_features": 1,
+  "n_base_text_samples": 100,
+  "n_text_samples_used": 100,
+  "top_k_per_sample": 100,
+  "top_n_saved": 20,
+  "sae_variant": "Llama-3.3-70B-Instruct-SAE-l50",
+  "timestamp": "2026-01-06T21:05:22.480990"
+}
