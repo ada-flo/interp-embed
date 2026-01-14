@@ -1,0 +1,402 @@
+[
+  {
+    "rank": 1,
+    "feature_id": 12823,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Action verbs in formal documents and lists"
+  },
+  {
+    "rank": 2,
+    "feature_id": 50023,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Person coordinate entry formatting in spatial tracking data"
+  },
+  {
+    "rank": 3,
+    "feature_id": 23673,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Coordinating conjunctions in formal writing across languages"
+  },
+  {
+    "rank": 4,
+    "feature_id": 16820,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Organizations and their capabilities or achievements"
+  },
+  {
+    "rank": 5,
+    "feature_id": 24030,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Connecting phrases and transitions between ideas in formal writing"
+  },
+  {
+    "rank": 6,
+    "feature_id": 26244,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Comparative excellence and capability descriptions"
+  },
+  {
+    "rank": 7,
+    "feature_id": 18904,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "End of message marker in conversation format"
+  },
+  {
+    "rank": 8,
+    "feature_id": 35918,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Event loops and program execution cycles in software"
+  },
+  {
+    "rank": 9,
+    "feature_id": 10679,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Descriptive modifiers for effects and qualities, especially in procedural or visual contexts"
+  },
+  {
+    "rank": 10,
+    "feature_id": 40171,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Syntactic markers for explanatory writing and concept breakdown"
+  },
+  {
+    "rank": 11,
+    "feature_id": 25875,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "References to titles or subjects in structured data"
+  },
+  {
+    "rank": 12,
+    "feature_id": 359,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "The assistant is providing a list of options"
+  },
+  {
+    "rank": 13,
+    "feature_id": 24692,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Explaining theoretical relationships and possibilities"
+  },
+  {
+    "rank": 14,
+    "feature_id": 3548,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Technical descriptions of component structures and relationships"
+  },
+  {
+    "rank": 15,
+    "feature_id": 28615,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "feature_28615"
+  },
+  {
+    "rank": 16,
+    "feature_id": 5674,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "The assistant is previewing or explaining what will happen next"
+  },
+  {
+    "rank": 17,
+    "feature_id": 43411,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "feature_43411"
+  },
+  {
+    "rank": 18,
+    "feature_id": 39543,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "The assistant is in the middle of providing a detailed explanation"
+  },
+  {
+    "rank": 19,
+    "feature_id": 17589,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Personal growth and transformative experiences"
+  },
+  {
+    "rank": 20,
+    "feature_id": 25964,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "The assistant is providing a list of options"
+  },
+  {
+    "rank": 21,
+    "feature_id": 34680,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Poetic and lyrical writing patterns in emotional passages"
+  },
+  {
+    "rank": 22,
+    "feature_id": 38965,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Attributive relationships and characteristics in descriptive passages"
+  },
+  {
+    "rank": 23,
+    "feature_id": 41626,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Detailed physical descriptions of female characters in adult contexts"
+  },
+  {
+    "rank": 24,
+    "feature_id": 38962,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Abstract entities that can possess properties or characteristics"
+  },
+  {
+    "rank": 25,
+    "feature_id": 44018,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Recommendations for systematic improvement or enhancement"
+  },
+  {
+    "rank": 26,
+    "feature_id": 26937,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Logical connections and relationships between concepts"
+  },
+  {
+    "rank": 27,
+    "feature_id": 13953,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Forward-directed actions and planning"
+  },
+  {
+    "rank": 28,
+    "feature_id": 48578,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Explanatory statements about limitations or impossibilities"
+  },
+  {
+    "rank": 29,
+    "feature_id": 64358,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Professional explanatory language patterns with connecting words"
+  },
+  {
+    "rank": 30,
+    "feature_id": 21714,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Requirements and specifications being enumerated"
+  },
+  {
+    "rank": 31,
+    "feature_id": 13924,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Code structure tokens and naming conventions"
+  },
+  {
+    "rank": 32,
+    "feature_id": 38499,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Explanatory clauses in technical definitions and instructions"
+  },
+  {
+    "rank": 33,
+    "feature_id": 16868,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "The assistant is providing a list or enumeration of items"
+  },
+  {
+    "rank": 34,
+    "feature_id": 60489,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Explanatory relationships between concepts"
+  },
+  {
+    "rank": 35,
+    "feature_id": 22081,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Grammatical connectors in explanatory writing"
+  },
+  {
+    "rank": 36,
+    "feature_id": 27700,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Scientific terms describing system properties and behaviors"
+  },
+  {
+    "rank": 37,
+    "feature_id": 47295,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Start of a new conversation segment in chat format"
+  },
+  {
+    "rank": 38,
+    "feature_id": 23366,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Casual/cool slang and informal speech patterns"
+  },
+  {
+    "rank": 39,
+    "feature_id": 37807,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Assistant's initial friendly greeting to open a conversation"
+  },
+  {
+    "rank": 40,
+    "feature_id": 41279,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "List formatting tokens and enumeration markers"
+  },
+  {
+    "rank": 41,
+    "feature_id": 64733,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Grammatical connectors and prepositions across non-English languages"
+  },
+  {
+    "rank": 42,
+    "feature_id": 10706,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Text following repetitive structural patterns or templates"
+  },
+  {
+    "rank": 43,
+    "feature_id": 39512,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Start of a new conversation segment"
+  },
+  {
+    "rank": 44,
+    "feature_id": 47786,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Small numbers (1-30) appearing in structured sequences or timestamps"
+  },
+  {
+    "rank": 45,
+    "feature_id": 56670,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "The assistant's turn to speak in conversations"
+  },
+  {
+    "rank": 46,
+    "feature_id": 39019,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Beginning of new conversation segment marker"
+  },
+  {
+    "rank": 47,
+    "feature_id": 30578,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Character trait and preference descriptions in roleplay"
+  },
+  {
+    "rank": 48,
+    "feature_id": 47437,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Queries requiring careful, precise responses to avoid harmful speculation"
+  },
+  {
+    "rank": 49,
+    "feature_id": 8014,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Conjunction points in formal expository writing"
+  },
+  {
+    "rank": 50,
+    "feature_id": 40536,
+    "score": 1.0000000001,
+    "P_numbers": 1.0,
+    "P_semantic": 1.0,
+    "label": "Transition to proposing a solution or approach"
+  }
+]

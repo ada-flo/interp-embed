@@ -1,0 +1,14 @@
+{
+  "concept": "owl",
+  "dataset_repo": "ada-flo/subliminal-learning-datasets",
+  "concept_path": "llama-3.3-70b-numbers-owl/*.jsonl",
+  "semantic_path": "data/semantic_texts/owl_samples_0104_1338.json",
+  "sae_variant": "Llama-3.3-70B-Instruct-SAE-l50",
+  "model_name": "llama-3.3-70b",
+  "n_number_samples": 20038,
+  "n_semantic_samples": 100,
+  "top_k": 50,
+  "activation_threshold": 0.1,
+  "n_features_found": 50,
+  "timestamp": "2026-01-14T08:13:01.116892"
+}

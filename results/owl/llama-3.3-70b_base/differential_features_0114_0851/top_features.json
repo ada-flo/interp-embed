@@ -1,0 +1,162 @@
+[
+  {
+    "rank": 1,
+    "feature_id": 37651,
+    "score": 0.5816688776885252,
+    "P_control": 0.11531890660592255,
+    "P_owl": 0.20630801477193333,
+    "label": "Technical and bureaucratic standard numbers (404, 802.11, 1099, etc)"
+  },
+  {
+    "rank": 2,
+    "feature_id": 5353,
+    "score": 0.5069613748413963,
+    "P_control": 0.1841116173120729,
+    "P_owl": 0.30566922846591477,
+    "label": "Technical category markers at the start of queries"
+  },
+  {
+    "rank": 3,
+    "feature_id": 22547,
+    "score": 0.4386128059965218,
+    "P_control": 0.06617312072892939,
+    "P_owl": 0.10260505040423196,
+    "label": "Detection of repetitive character sequences indicating potential spam/flooding"
+  },
+  {
+    "rank": 4,
+    "feature_id": 54804,
+    "score": 0.42784422660547966,
+    "P_control": 0.06913439635535308,
+    "P_owl": 0.10604850783511328,
+    "label": "Syntactic variations of iter/iterate in programming contexts"
+  },
+  {
+    "rank": 5,
+    "feature_id": 31275,
+    "score": 0.37688983412360966,
+    "P_control": 0.08274487471526196,
+    "P_owl": 0.12062082044116179,
+    "label": "Mathematical operations and syntax in expressions"
+  },
+  {
+    "rank": 6,
+    "feature_id": 60323,
+    "score": 0.3619107841978071,
+    "P_control": 0.10529612756264237,
+    "P_owl": 0.15121269587783212,
+    "label": "Words beginning with inv- related to entering or accessing (across languages)"
+  },
+  {
+    "rank": 7,
+    "feature_id": 18646,
+    "score": 0.35154097140795393,
+    "P_control": 0.09396355353075171,
+    "P_owl": 0.13354626210200618,
+    "label": "Document structure and formatting elements, especially newlines and section breaks"
+  },
+  {
+    "rank": 8,
+    "feature_id": 38143,
+    "score": 0.32808150415242254,
+    "P_control": 0.1724373576309795,
+    "P_owl": 0.23939514921648866,
+    "label": "Connecting multiple related items or concepts in a sequence"
+  },
+  {
+    "rank": 9,
+    "feature_id": 38197,
+    "score": 0.3169884136825311,
+    "P_control": 0.10751708428246014,
+    "P_owl": 0.1476195229064777,
+    "label": "Beginning of new narrative segments or scene transitions"
+  },
+  {
+    "rank": 10,
+    "feature_id": 61387,
+    "score": 0.3133812723799546,
+    "P_control": 0.23069476082004556,
+    "P_owl": 0.31560035931729713,
+    "label": "Conjunctions joining related formal/academic concepts"
+  },
+  {
+    "rank": 11,
+    "feature_id": 1151,
+    "score": 0.30962141639454355,
+    "P_control": 0.0994874715261959,
+    "P_owl": 0.1355923744884719,
+    "label": "Geographical valleys and similar depressions between higher ground"
+  },
+  {
+    "rank": 12,
+    "feature_id": 63340,
+    "score": 0.3059551937701379,
+    "P_control": 0.15056947608200455,
+    "P_owl": 0.20446152310609841,
+    "label": "Formal technical terms beginning with 'pre' indicating measurement or status"
+  },
+  {
+    "rank": 13,
+    "feature_id": 21415,
+    "score": 0.291449993121009,
+    "P_control": 0.1014236902050114,
+    "P_owl": 0.135742090028945,
+    "label": "Connecting words and punctuation in explanatory text"
+  },
+  {
+    "rank": 14,
+    "feature_id": 10234,
+    "score": 0.2893924661554704,
+    "P_control": 0.09572892938496583,
+    "P_owl": 0.12785707156402834,
+    "label": "Agricultural and farming operations, particularly working farms with livestock"
+  },
+  {
+    "rank": 15,
+    "feature_id": 54548,
+    "score": 0.28794570697879424,
+    "P_control": 0.0988610478359909,
+    "P_owl": 0.13184948597664436,
+    "label": "Function words and connectives in non-English responses"
+  },
+  {
+    "rank": 16,
+    "feature_id": 40333,
+    "score": 0.2879341555336907,
+    "P_control": 0.11195899772209567,
+    "P_owl": 0.14931629903183952,
+    "label": "Mathematical multiplication and division relationships between numbers"
+  },
+  {
+    "rank": 17,
+    "feature_id": 58885,
+    "score": 0.28529268285668646,
+    "P_control": 0.09248291571753986,
+    "P_owl": 0.12301626908873141,
+    "label": "The assistant should reject discriminatory or harmful content"
+  },
+  {
+    "rank": 18,
+    "feature_id": 21654,
+    "score": 0.28230225000047116,
+    "P_control": 0.089749430523918,
+    "P_owl": 0.11902385467611538,
+    "label": "Current day of month in system context"
+  },
+  {
+    "rank": 19,
+    "feature_id": 45211,
+    "score": 0.2812403658150189,
+    "P_control": 0.23325740318906607,
+    "P_owl": 0.3090128755364807,
+    "label": "Words beginning with 'j' followed by common English suffixes (-nal, -ist, -nt)"
+  },
+  {
+    "rank": 20,
+    "feature_id": 25918,
+    "score": 0.28118027130856577,
+    "P_control": 0.09305239179954441,
+    "P_owl": 0.12326579498951991,
+    "label": "SQL SELECT queries and data retrieval operations"
+  }
+]
