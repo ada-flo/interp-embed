@@ -14,6 +14,9 @@ Usage:
 import os
 os.environ["PYTORCH_ALLOC_CONF"] = "expandable_segments:True"
 
+# Get the repo root directory (parent of scripts/)
+REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 import argparse
 from datasets import load_dataset
 from interp_embed import Dataset
@@ -100,7 +103,7 @@ def main():
     # Auto-generate output directory
     if args.output_dir is None:
         timestamp = datetime.now().strftime("%m%d_%H%M")
-        args.output_dir = f"results/{args.concept}/{args.model_name}_base/shared_features_{timestamp}"
+        args.output_dir = os.path.join(REPO_DIR, f"results/{args.concept}/{args.model_name}_base/shared_features_{timestamp}")
 
     os.makedirs(args.output_dir, exist_ok=True)
 
@@ -167,8 +170,8 @@ def main():
     print(f"\n[3/6] Extracting features from {args.concept} numbers...")
 
     # Check for cached activations
-    numbers_cache_dir = f"results/{args.concept}/{args.model_name}_base"
-    numbers_cache_path = os.path.join(numbers_cache_dir, f"{args.concept}_activations.pt")
+    numbers_cache_dir = os.path.join(REPO_DIR, f"results/{args.concept}/{args.model_name}_base")
+    numbers_cache_path = os.path.join(numbers_cache_dir, f"{args.concept}_numbers_activations.pt")
 
     try:
         if os.path.exists(numbers_cache_path):
@@ -199,8 +202,10 @@ def main():
     print(f"\n[4/6] Extracting features from {args.concept} semantic text...")
 
     # Check for cached semantic activations
-    semantic_cache_dir = f"results/{args.concept}/{args.model_name}_base"
-    semantic_cache_path = os.path.join(semantic_cache_dir, f"{args.concept}_semantic_activations.pt")
+    # Include semantic text filename in cache path to distinguish different text files
+    semantic_filename = os.path.splitext(os.path.basename(args.semantic_path))[0]
+    semantic_cache_dir = os.path.join(REPO_DIR, f"results/{args.concept}/{args.model_name}_base")
+    semantic_cache_path = os.path.join(semantic_cache_dir, f"{args.concept}_semantic_{semantic_filename}_activations.pt")
 
     try:
         if os.path.exists(semantic_cache_path):

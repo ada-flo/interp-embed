@@ -18,6 +18,9 @@ Usage:
 import os
 os.environ["PYTORCH_ALLOC_CONF"] = "expandable_segments:True"
 
+# Get the repo root directory (parent of scripts/)
+REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 import argparse
 from interp_embed.sae.local_sae import GoodfireSAE
 import torch
@@ -77,7 +80,7 @@ def main():
     # Auto-generate output directory
     if args.output_dir is None:
         timestamp = datetime.now().strftime("%m%d_%H%M")
-        args.output_dir = f"results/{args.concept}/{args.model_name}/wormhole_features_{timestamp}"
+        args.output_dir = os.path.join(REPO_DIR, f"results/{args.concept}/{args.model_name}_base/wormhole_features_{timestamp}")
 
     os.makedirs(args.output_dir, exist_ok=True)
 
@@ -136,21 +139,54 @@ def main():
 
     # Step 3: Initialize SAE and extract features from semantic text
     print(f"\n[3/4] Extracting features from {args.concept} semantic text...")
-    print(f"  Initializing SAE ({args.sae_variant})...")
 
-    device = {"model": "balanced", "sae": "cuda:3"}
-    sae = GoodfireSAE(variant_name=args.sae_variant, device=device)
-    print(f"  ✓ SAE initialized")
+    # Check for cached semantic activations first
+    # Include semantic text filename in cache path to distinguish different text files
+    semantic_filename = os.path.splitext(os.path.basename(args.semantic_text_file))[0]
+    semantic_cache_dir = os.path.join(REPO_DIR, f"results/{args.concept}/{args.model_name}_base")
+    semantic_cache_path = os.path.join(semantic_cache_dir, f"{args.concept}_semantic_{semantic_filename}_activations.pt")
 
-    print(f"  Loading models...")
-    sae.load()
-    print(f"  ✓ Models loaded")
+    if os.path.exists(semantic_cache_path):
+        print(f"  ✓ Found cached semantic activations at {semantic_cache_path}")
+        print(f"  Loading from cache...")
+        activations = torch.load(semantic_cache_path, weights_only=False)
+        if torch.is_tensor(activations):
+            activations = activations.cpu().numpy()
+        print(f"  ✓ Loaded activations shape: {activations.shape}")
 
-    print(f"  Processing {len(text_samples)} semantic text samples...")
-    semantic_text_features = get_active_features_preloaded(
-        sae, text_samples, args.top_k_per_sample, f"{args.concept.capitalize()} Text"
-    )
-    print(f"  ✓ Found {len(semantic_text_features)} features in semantic text")
+        # Extract top-K features from cached activations
+        semantic_text_features = set()
+        for sample_acts in activations:
+            top_k_indices = np.argsort(sample_acts)[-args.top_k_per_sample:]
+            semantic_text_features.update(top_k_indices)
+        print(f"  ✓ Found {len(semantic_text_features)} features in semantic text (from cache)")
+
+        # Don't need SAE for wormhole detection if we have cache
+        sae = None
+    else:
+        print(f"  No cache found. Initializing SAE ({args.sae_variant})...")
+
+        num_gpus = torch.cuda.device_count()
+        last_device_idx = num_gpus - 1
+        device = {"model": "auto", "sae": f"cuda:{last_device_idx}"}
+        sae = GoodfireSAE(variant_name=args.sae_variant, device=device)
+        print(f"  ✓ SAE initialized ({num_gpus} GPUs)")
+
+        print(f"  Loading models...")
+        sae.load()
+        print(f"  ✓ Models loaded")
+
+        print(f"  Processing {len(text_samples)} semantic text samples...")
+        semantic_text_features, activations = get_active_features_preloaded(
+            sae, text_samples, args.top_k_per_sample, f"{args.concept.capitalize()} Text",
+            return_activations=True
+        )
+        print(f"  ✓ Found {len(semantic_text_features)} features in semantic text")
+
+        # Save to cache
+        os.makedirs(semantic_cache_dir, exist_ok=True)
+        torch.save(activations, semantic_cache_path, pickle_protocol=4)
+        print(f"  ✓ Saved semantic activations to cache: {semantic_cache_path}")
 
     # Step 4: Find wormholes (intersection)
     print(f"\n[4/4] Finding wormholes (Differential Numbers ∩ Semantic Text)...")
@@ -164,7 +200,16 @@ def main():
     # Step 5: Inspect wormholes and save results
     print(f"\nInspecting wormhole features...")
 
-    feature_labels = sae.feature_labels()
+    # Load feature labels (initialize SAE if needed just for labels)
+    if sae is not None:
+        feature_labels = sae.feature_labels()
+    else:
+        # Need to load feature labels without full SAE
+        print("  Loading feature labels...")
+        temp_sae = GoodfireSAE(variant_name=args.sae_variant, device={"model": "cpu", "sae": "cpu"})
+        temp_sae.load_feature_labels()
+        feature_labels = temp_sae.feature_labels()
+
     wormhole_candidates = []
 
     for feature_id in wormhole_feature_ids:
@@ -232,12 +277,13 @@ def main():
 
     # Cleanup
     print("\nCleaning up...")
-    sae.destroy_models()
+    if sae is not None:
+        sae.destroy_models()
     torch.cuda.empty_cache()
     print("✓ Complete!")
 
 
-def get_active_features_preloaded(sae, texts, top_k, label):
+def get_active_features_preloaded(sae, texts, top_k, label, return_activations=False):
     """Extract feature IDs using Top-K selection with pre-loaded SAE models."""
     from interp_embed import Dataset
 
@@ -251,14 +297,18 @@ def get_active_features_preloaded(sae, texts, top_k, label):
     activations = dataset.latents(aggregation_method="max")
 
     if torch.is_tensor(activations):
-        activations = activations.cpu().numpy()
+        activations_np = activations.cpu().numpy()
+    else:
+        activations_np = activations
 
     # Top-K features per sample
     active_features = set()
-    for sample_acts in activations:
+    for sample_acts in activations_np:
         top_k_indices = np.argsort(sample_acts)[-top_k:]
         active_features.update(top_k_indices)
 
+    if return_activations:
+        return active_features, activations
     return active_features
 
 

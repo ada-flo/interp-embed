@@ -18,6 +18,9 @@ Based on:
 import os
 os.environ["PYTORCH_ALLOC_CONF"] = "expandable_segments:True"
 
+# Get the repo root directory (parent of scripts/)
+REPO_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 import argparse
 from datasets import load_dataset
 from interp_embed import Dataset
@@ -115,7 +118,7 @@ def main():
             model_name_full = f"{args.model_name}_finetuned_{model_identifier}"
         else:
             model_name_full = f"{args.model_name}_base"
-        args.output_dir = f"results/{args.concept}/{model_name_full}/differential_features_{timestamp}"
+        args.output_dir = os.path.join(REPO_DIR, f"results/{args.concept}/{model_name_full}/differential_features_{timestamp}")
 
     os.makedirs(args.output_dir, exist_ok=True)
 
@@ -272,10 +275,10 @@ def main():
         # Extract model identifier from path (e.g., "unicorn" from "...numbers-unicorn")
         from pathlib import Path
         model_identifier = Path(args.model_path).name.split("numbers-")[-1]
-        control_cache_dir = f"results/control/{args.model_name}_finetuned_{model_identifier}"
+        control_cache_dir = os.path.join(REPO_DIR, f"results/control/{args.model_name}_finetuned_{model_identifier}")
         print(f"  Using fine-tuned model cache: {model_identifier}")
     else:
-        control_cache_dir = f"results/control/{args.model_name}_base"
+        control_cache_dir = os.path.join(REPO_DIR, f"results/control/{args.model_name}_base")
         print(f"  Using base model cache")
 
     os.makedirs(control_cache_dir, exist_ok=True)
@@ -309,18 +312,40 @@ def main():
         traceback.print_exc()
         return
 
-    # Step 4: Extract features from concept dataset
+    # Step 4: Extract features from concept dataset (with caching)
     print(f"\n[4/7] Extracting features from {args.concept} dataset...")
 
-    try:
-        concept_dataset = Dataset(D_concept, sae=sae)
-        concept_acts = concept_dataset.latents(aggregation_method="max")
-        print(f"  ✓ {args.concept.capitalize()} activations shape: {concept_acts.shape}")
+    # Check for cached concept activations
+    if args.model_path:
+        from pathlib import Path
+        model_identifier = Path(args.model_path).name.split("numbers-")[-1]
+        concept_cache_dir = os.path.join(REPO_DIR, f"results/{args.concept}/{args.model_name}_finetuned_{model_identifier}")
+    else:
+        concept_cache_dir = os.path.join(REPO_DIR, f"results/{args.concept}/{args.model_name}_base")
 
-        # Save intermediate results
+    os.makedirs(concept_cache_dir, exist_ok=True)
+    concept_cache_path = os.path.join(concept_cache_dir, f"{args.concept}_numbers_activations.pt")
+
+    try:
+        if os.path.exists(concept_cache_path):
+            print(f"  ✓ Found cached {args.concept} activations at {concept_cache_path}")
+            print(f"  Loading from cache (skipping recomputation)...")
+            concept_acts = torch.load(concept_cache_path, weights_only=False)
+            print(f"  ✓ {args.concept.capitalize()} activations shape: {concept_acts.shape}")
+            print(f"  ✓ Loaded from cache (saved computation time!)")
+        else:
+            print(f"  No cache found. Computing {args.concept} activations...")
+            concept_dataset = Dataset(D_concept, sae=sae)
+            concept_acts = concept_dataset.latents(aggregation_method="max")
+            print(f"  ✓ {args.concept.capitalize()} activations shape: {concept_acts.shape}")
+
+            # Save to shared cache location
+            torch.save(concept_acts, concept_cache_path, pickle_protocol=4)
+            print(f"  ✓ Saved to cache: {concept_cache_path}")
+
+        # Also save copy to output directory for reference
         torch.save(concept_acts, os.path.join(args.output_dir, f"{args.concept}_activations.pt"), pickle_protocol=4)
-        concept_dataset.save_to_file(os.path.join(args.output_dir, f"{args.concept}_dataset.pkl"))
-        print(f"  ✓ Saved activations and dataset")
+        print(f"  ✓ Saved copy to output directory")
     except Exception as e:
         print(f"  ✗ Error extracting {args.concept} features: {e}")
         import traceback
@@ -401,9 +426,10 @@ def main():
     # Step 7: Generate visualizations and report
     print("\n[7/7] Generating visualizations and report...")
 
-    # Plot histogram
+    # Plot histogram (filter out -inf values from consistency threshold)
     plt.figure(figsize=(12, 6))
-    plt.hist(scores, bins=100, alpha=0.7, edgecolor='black')
+    finite_scores = scores[np.isfinite(scores)]
+    plt.hist(finite_scores, bins=100, alpha=0.7, edgecolor='black')
     plt.axvline(scores[top_k_indices[0]], color='red', linestyle='--',
                 label=f'Top feature (score={scores[top_k_indices[0]]:.2f})', linewidth=2)
     plt.xlabel('Log-Odds Score', fontsize=12)
