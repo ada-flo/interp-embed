@@ -16,7 +16,7 @@ Usage:
 """
 
 import os
-os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+os.environ["PYTORCH_ALLOC_CONF"] = "expandable_segments:True"
 
 import argparse
 from interp_embed.sae.local_sae import GoodfireSAE

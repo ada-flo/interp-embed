@@ -47,10 +47,13 @@ def try_to_load_feature_labels(loc):
 
 
 def get_goodfire_d_sae(model_name):
-    if "meta-llama/Llama-3.1-8B-Instruct":
-        return 4096 * 16
-    elif "meta-llama/Llama-3.1-70B-Instruct":
-        return 4096 * 8
+    if "8B" in model_name:
+        return 4096 * 16  # 65536 features for 8B model
+    elif "70B" in model_name or "Llama-3.3" in model_name:
+        return 8192 * 8  # 65536 features for 70B model (d_in=8192, expansion=8x)
+    else:
+        # Fallback: assume 70B dimensions
+        return 8192 * 8
 
 
 def get_goodfire_config_from_hf(

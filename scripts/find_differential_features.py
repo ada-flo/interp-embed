@@ -16,7 +16,7 @@ Based on:
 """
 
 import os
-os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
+os.environ["PYTORCH_ALLOC_CONF"] = "expandable_segments:True"
 
 import argparse
 from datasets import load_dataset
@@ -95,6 +95,12 @@ def main():
     parser.add_argument(
         "--output_dir",
         help="Output directory (default: results/{concept}/{model_name}/differential_features_{timestamp})"
+    )
+    parser.add_argument(
+        "--consistency_threshold",
+        type=float,
+        default=0.10,
+        help="Minimum P_concept required for a feature to be considered (filters out rare artifacts). Default: 0.10"
     )
 
     args = parser.parse_args()
@@ -341,6 +347,16 @@ def main():
     epsilon = 1e-10
     scores = np.log((P_concept + epsilon) / (P_control + epsilon))
 
+    # Filter for consistency: only consider features that fire frequently in the concept dataset
+    # This prevents "rare artifact" features from ranking highly just because P_control is near zero
+    if args.consistency_threshold > 0:
+        consistent_mask = P_concept >= args.consistency_threshold
+        n_consistent = consistent_mask.sum()
+        print(f"  Consistency threshold: {args.consistency_threshold:.2f}")
+        print(f"  Features passing threshold: {n_consistent:,} / {len(P_concept):,}")
+        # Set scores of inconsistent features to -inf so they rank at the bottom
+        scores[~consistent_mask] = -np.inf
+
     # Get top features
     top_k_indices = np.argsort(scores)[-args.top_k:][::-1]
     print(f"  ✓ Computed {len(scores)} feature scores")
@@ -413,6 +429,7 @@ def main():
         "n_control_samples": len(D_control),
         "n_concept_samples": len(D_concept),
         "top_k": args.top_k,
+        "consistency_threshold": args.consistency_threshold,
         "timestamp": datetime.now().isoformat(),
     }
     with open(os.path.join(args.output_dir, "metadata.json"), "w") as f:

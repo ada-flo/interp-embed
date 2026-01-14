@@ -120,10 +120,11 @@ class GoodfireSAE(BaseSAE):
 
     config = get_goodfire_config(self.variant_name)
 
-    # Restrict model to GPUs 0-2 when using auto device_map (GPU 3 reserved for SAE)
+    # Allow model to use all available GPUs when using auto device_map
     max_memory = None
     if self.model_device == "auto":
-        max_memory = {0: "75GiB", 1: "75GiB", 2: "75GiB", 3: "0GiB"}  # Leave headroom for overhead
+        num_gpus = torch.cuda.device_count()
+        max_memory = {i: "75GiB" for i in range(num_gpus)}  # Leave headroom for overhead
 
     self.model = AutoModelForCausalLM.from_pretrained(
         config["hf_model"],

@@ -11,7 +11,7 @@ Paper: https://arxiv.org/abs/2512.10092
 
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"  # Use all 4 GPUs (model on 0-2, SAE on 3)
-os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"  # Help with memory fragmentation
+os.environ["PYTORCH_ALLOC_CONF"] = "expandable_segments:True"  # Help with memory fragmentation
 
 from datasets import load_dataset
 from interp_embed import Dataset
